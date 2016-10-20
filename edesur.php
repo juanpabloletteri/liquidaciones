@@ -94,7 +94,7 @@
 			</select>
 			<br>
 			<br>
-				<button type="button" class="round medium blue button" onclick="agregar()">Agregar</button>
+				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
 		</form>
 	</div>
 </section>
@@ -103,7 +103,7 @@
 		<section class="container">
 			<div class="login">
 				<h1>Resumen Liquidaciones - EDESUR</h1>
-				<button type="button" class="round medium blue button" onclick="tabla()">Mostrar</button>
+				<button type="button" class="round medium blue button" onclick="tabla(1)">Mostrar</button>
 			</div>
 			
 			<div class="login" id="tablapersonas">

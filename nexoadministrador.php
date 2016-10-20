@@ -43,8 +43,20 @@ if (isset($_POST['boton']))
 	if ($_POST['boton']=="Agregar") 
 	{
 		//echo("agregaaaaa");
-		persona::Guardar($_POST['empresa'],$_POST['monto'],$_POST['dia'],$_POST['mes'],$_POST['ano']);
-		header("Location: paginadatos.php");
+		persona::Guardar($_POST['empresa'],$_POST['monto'],$_POST['dia'],$_POST['mes'],$_POST['ano'], $_POST['codigo']);
+		
+		if ($_POST['codigo']==1) 
+		{
+			header("Location: edesur.php");
+		}
+		elseif ($_POST['codigo']==2)
+		{
+			header("Location: metrogas.php");
+		}
+				elseif ($_POST['codigo']==3)
+		{
+			header("Location: telecomunicaciones.php");
+		}
 	}
 
 	if ($_POST['boton']=="Mostrar") 

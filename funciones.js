@@ -47,7 +47,7 @@ function Eliminar(indice)
 		$("#tabla").html("");});	
 }
 
-function agregar()
+function agregar(cod)
 {
 	var f=$.ajax({
 		url:"nexoadministrador.php",
@@ -59,6 +59,7 @@ function agregar()
 			dia: $("#dia").val(),
 			mes: $("#mes").val(),
 			ano: $("#ano").val(),
+			codigo: cod,
 		}});
 	f.done(function(r) {
 		tabla();

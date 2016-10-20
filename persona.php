@@ -16,7 +16,7 @@ class Persona
 		$this->sexo=$sexo;	
 		$this->liberado=$liberado;			
 	}*/
-public function AsignarRuta($codigo)
+public static function AsignarRuta($codigo)
 {
 	if ($codigo==1)
 	{
@@ -34,9 +34,10 @@ public function AsignarRuta($codigo)
 }
 
 
-public static function Guardar($empresa, $monto, $dia, $mes, $ano)
+public static function Guardar($empresa, $monto, $dia, $mes, $ano, $codigo)
 {
-	$file=fopen("personas.txt","a");
+	$ruta=Persona::AsignarRuta($codigo);
+	$file=fopen($ruta,"a");
 	fwrite($file, $empresa."-".$monto."-".$dia."-".$mes."-".$ano."\n");
 	fclose($file);
 }
