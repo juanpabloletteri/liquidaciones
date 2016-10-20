@@ -5,6 +5,16 @@
   <title>LIQUIDACIONES</title>
   <link rel="stylesheet" href="css/style.css">
 
+  <style>
+  select {
+    width: 75%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+  }
+  </style>
+
 </head>
 <body>
   <section class="container">
@@ -14,6 +24,12 @@
         <p><input type="text" name="usuario" placeholder="Usuario"></p>
         <p><input type="password" name="pass" placeholder="Password"></p>
         <p class="remember_me">
+        <label>Empresa: </label>
+        <select name="grupo" id="grupo">
+          <option value="edesur">Edesur</option>
+          <option value="metrogas">Metrogas</option>
+          <option value="telecomunicaciones">Telecomunicaciones</option>
+        </select>
 
         </p>
         <p class="submit"><input type="submit" name="boton" value="Ingresar"></p>

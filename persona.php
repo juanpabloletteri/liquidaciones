@@ -16,6 +16,23 @@ class Persona
 		$this->sexo=$sexo;	
 		$this->liberado=$liberado;			
 	}*/
+public function AsignarRuta($codigo)
+{
+	if ($codigo==1)
+	{
+		$ruta="empresas/edesur.txt";
+	}
+	elseif ($codigo==2)
+	{
+		$ruta="empresas/metrogas.txt";
+	}
+		elseif ($codigo==3)
+	{
+		$ruta="empresas/telecomunicaciones.txt";
+	}
+	return $ruta;
+}
+
 
 public static function Guardar($empresa, $monto, $dia, $mes, $ano)
 {

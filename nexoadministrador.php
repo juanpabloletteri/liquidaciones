@@ -8,7 +8,20 @@ if (isset($_POST['usuario'],$_POST['pass']))
 	{
 		if (Usuario::Buscar($_POST['usuario'],$_POST['pass']))
 		{
-			header("Location: paginadatos.php");
+			if ($_POST['grupo']=="edesur")
+			{
+				header("Location: edesur.php");
+			}
+			elseif ($_POST['grupo']=="metrogas")
+			{
+				header("Location: metrogas.php");
+			}
+			elseif ($_POST['grupo']=="telecomunicaciones")
+			{
+				header("Location: telecomunicaciones.php");
+			}
+
+			//header("Location: paginadatos.php");
 			//echo("siiiii");
 		}
 		else
