@@ -1,4 +1,4 @@
-function tabla()
+function tabla(cod)
 {
 	var f=$.ajax
 	(
@@ -7,7 +7,8 @@ function tabla()
 			type:"post",
 			data:
 			{
-				boton:"Mostrar"
+				boton:"Mostrar",
+				codigo: cod,
 			}
 		}
 	);

@@ -42,13 +42,14 @@ public static function Guardar($empresa, $monto, $dia, $mes, $ano, $codigo)
 	fclose($file);
 }
 
-public static function LeerPersonas()
+public static function LeerPersonas($codigo)
 {
+	$ruta=Persona::AsignarRuta($codigo);
 	$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th><th>Eliminar</th></tr>";
-	if (file_exists("personas.txt"))
+	if (file_exists($ruta))
 	{	
 		$cont=0;
-		$archivo=fopen("personas.txt","r");
+		$archivo=fopen($ruta,"r");
 		while (!(feof($archivo)))
 		{
 			
