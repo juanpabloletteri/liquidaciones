@@ -1,10 +1,12 @@
 <html>
 <head>
 
+	<title>LIQUIDACIONES - EDESUR</title>
   <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/style.css">
 
 
+	  <script src="funciones.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<style>
@@ -37,6 +39,7 @@
 
 <section class="container">
 	<div class="login">
+		<h1>Ingreso de datos - EDESUR</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
 			<input type="text" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
@@ -99,6 +102,7 @@
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
 			<div class="login">
+				<h1>Resumen Liquidaciones - EDESUR</h1>
 				<button type="button" class="round medium blue button" onclick="tabla()">Mostrar</button>
 			</div>
 			
