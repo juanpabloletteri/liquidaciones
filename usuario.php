@@ -37,6 +37,10 @@ public static function Buscar($usuario, $pass, $grupo)
 			return true;
 		}
 	}
+		$fecha=date("Y-m-d H:i:s");
+		$file=fopen("logFail.txt","a");
+		fwrite($file,$usuario."   ".$grupo."   ".$fecha."\n");
+		fclose($file);
 	return false;
 
 }
