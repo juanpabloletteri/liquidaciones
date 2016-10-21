@@ -1,7 +1,7 @@
 <html>
 <head>
 
-	<title>LIQUIDACIONES - EDESUR</title>
+	<title>LIQUIDACIONES - TELECOMUNICACIONES</title>
   <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -39,7 +39,7 @@
 
 <section class="container">
 	<div class="login">
-		<h1>Ingreso de datos - EDESUR</h1>
+		<h1>Ingreso de datos - TELECOMUNICACIONES</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
 			<input type="text" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
@@ -47,10 +47,9 @@
 			<br>
 			<label>Empresa: </label>
 			<select name="empresa" id="empresa">
-				<option value="EdesurAlta">Edesur Alta</option>
-				<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
-				<option value="EdesurMediaBaja">Edesur Media y Baja</option>
-				<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
+				<option value="Telefonica">Telefonica</option>
+				<option value="Telecentro">Telecentro</option>
+				<option value="Telmex">Telmex</option>
 				<option value="Otros">Otros</option>
 			</select>
 			<br>
@@ -95,7 +94,7 @@
 			</select>
 			<br>
 			<br>
-				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
+				<button type="button" class="round medium blue button" onclick="agregar(3)">Agregar</button>
 		</form>
 	</div>
 </section>
@@ -103,8 +102,8 @@
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
 			<div class="login">
-				<h1>Resumen Liquidaciones - EDESUR</h1>
-				<button type="button" class="round medium blue button" onclick="tabla(1)">Mostrar</button>
+				<h1>Resumen Liquidaciones - METROGAS</h1>
+				<button type="button" class="round medium blue button" onclick="tabla(3)">Mostrar</button>
 			</div>
 			
 			<div class="login" id="tablapersonas">

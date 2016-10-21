@@ -1,12 +1,12 @@
 <html>
 <head>
 
-	<title>LIQUIDACIONES</title>
+	<title>LIQUIDACIONES - EDESUR</title>
   <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/style.css">
 
 
-	  <script src="funcionesparcial.js"></script>
+	  <script src="funciones.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<style>
@@ -26,7 +26,7 @@
   			box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
 	}
 	select {
-    width: 45%;
+    width: 50%;
     padding: 5px 10px;
     border: none;
     border-radius: 8px;
@@ -39,7 +39,7 @@
 
 <section class="container">
 	<div class="login">
-		<h1>Ingreso de datos</h1>
+		<h1>Ingreso de datos - METROGAS</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
 			<input type="text" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
@@ -50,12 +50,7 @@
 				<option value="Cosugas">Cosugas</option>
 				<option value="EmaServicios">Ema Servicios</option>
 				<option value="Inarteco">Inarteco</option>
-				<option value="EdesurAlta">Edesur Alta</option>
-				<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
-				<option value="EdesurMediaBaja">Edesur Media y Baja</option>
-				<option value="Telefonica">Telefonica</option>
-				<option value="Telecentro">Telecentro</option>
-				<option value="Telmex">Telmex</option>
+				<option value="Otros">Otros</option>
 			</select>
 			<br>
 			<br>
@@ -99,7 +94,6 @@
 			</select>
 			<br>
 			<br>
-				<button type="button" class="round medium blue button" onclick="agregar()">Agregar</button>
 		</form>
 	</div>
 </section>
@@ -107,8 +101,7 @@
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
 			<div class="login">
-				<h1>Resumen Liquidaciones</h1>
-				<button type="button" class="round medium blue button" onclick="tabla()">Mostrar</button>
+				<h1>Resumen Liquidaciones - METROGAS</h1>
 			</div>
 			
 			<div class="login" id="tablapersonas">
