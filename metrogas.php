@@ -94,7 +94,11 @@
 			</select>
 			<br>
 			<br>
+				<button type="button" class="round medium blue button" onclick="agregar(2)">Agregar</button>
 		</form>
+	</div>
+		<div class="login-help">
+		<p><a href="index.html" style="font-size: 15px">Volver al Inicio</a></p>
 	</div>
 </section>
 <div>
@@ -102,6 +106,7 @@
 		<section class="container">
 			<div class="login">
 				<h1>Resumen Liquidaciones - METROGAS</h1>
+				<button type="button" class="round medium blue button" onclick="tabla(2)">Mostrar</button>
 			</div>
 			
 			<div class="login" id="tablapersonas">

@@ -97,12 +97,15 @@
 				<button type="button" class="round medium blue button" onclick="agregar(3)">Agregar</button>
 		</form>
 	</div>
+		<div class="login-help">
+		<p><a href="index.html" style="font-size: 15px">Volver al Inicio</a></p>
+	</div>
 </section>
 <div>
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
 			<div class="login">
-				<h1>Resumen Liquidaciones - METROGAS</h1>
+				<h1>Resumen Liquidaciones - TELECOMUNICACIONES</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(3)">Mostrar</button>
 			</div>
 			

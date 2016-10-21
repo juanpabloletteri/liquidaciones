@@ -98,7 +98,10 @@
 				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
 		</form>
 	</div>
+
 </section>
+
+
 <div>
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
@@ -106,9 +109,9 @@
 				<h1>Resumen Liquidaciones - EDESUR</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(1)">Mostrar</button>
 			</div>
-			
-			<div class="login" id="tablapersonas">
+				<div class="login" id="tablapersonas">
 			</div>	
+
 
 		</section>
 	</form>
