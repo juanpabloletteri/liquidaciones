@@ -63,7 +63,7 @@ function agregar(cod)
 			codigo: cod,
 		}});
 	f.done(function(r) {
-		tabla();
+		tabla(cod);
 		$("#tabla").html("");});	
 }
 
