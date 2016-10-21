@@ -6,7 +6,7 @@ if (isset($_POST['usuario'],$_POST['pass']))
 {
 	if ($_POST['boton']=="Ingresar")
 	{
-		if (Usuario::Buscar($_POST['usuario'],$_POST['pass']))
+		if (Usuario::Buscar($_POST['usuario'],$_POST['pass'], $_POST['grupo']))
 		{
 			if ($_POST['grupo']=="edesur")
 			{
