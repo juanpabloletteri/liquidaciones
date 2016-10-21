@@ -34,17 +34,18 @@ function borrar()
 		$("#tabla").html("");});	
 }
 
-function Eliminar(indice)
+function Eliminar(indice, cod)
 {
 	var f=$.ajax({
 		url:"nexoadministrador.php",
 		type:"post",
 		data:{
-			Eliminar: indice
+			Eliminar: indice,
+			codigo:cod,
 		}});
 	f.done(function(r) {
 		alert("eliminado");
-		tabla();
+		tabla(cod);
 		$("#tabla").html("");});	
 }
 

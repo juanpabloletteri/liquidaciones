@@ -2,7 +2,7 @@
 
 class Persona
 {
-	/*public $nombre;
+	public $nombre;
 	public $edad;
 	public $cargo;
 	public $sexo;
@@ -15,7 +15,7 @@ class Persona
 		$this->cargo=$cargo;	
 		$this->sexo=$sexo;	
 		$this->liberado=$liberado;			
-	}*/
+	}
 public static function AsignarRuta($codigo)
 {
 	if ($codigo==1)
@@ -62,7 +62,7 @@ public static function LeerPersonas($codigo)
 			if($datos[0] != "")
 			{
 				$tabla.="<tr><td>".$datos[0]."</td><td>$".$datos[1]."</td><td>".$datos[2]."</td><td>".$datos[3]."</td><td>".$datos[4]."</td>
-								<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($cont)'/>
+								<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($cont, $codigo)'/>
 								<!-- 
 								<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($cont)' /></td>
 								-->
@@ -84,35 +84,36 @@ public static function BorrarPersonas($ruta)
 	}
 }
 
-public static function Eliminar($indice)
+public static function Eliminar($indice, $codigo)
 {
+ 	$ruta=Persona::AsignarRuta($codigo);
  	//cargo todos los datos a un array
  	$lista=array();
- 	$lista=Persona::TraerTodos();
+ 	$lista=Persona::TraerTodos($ruta);
 	//elimino el archivo para despues volver a escribirlo
-	if (file_exists("personas.txt"))
+	if (file_exists($ruta))
 	{
-		unlink("personas.txt"); 
+		unlink($ruta); 
 	}
 	//borro en indice del array
 	unset($lista[$indice]);
 	//reescribo el archivo de texto
-	$file=fopen("personas.txt","a");
+	$file=fopen($ruta,"a");
 	foreach ($lista as $aux)
 	{
 		//Persona::Guardar($aux->nombre,$aux->edad,$aux->cargo,$aux->sexo);
-		fwrite($file, $aux->nombre.",".$aux->edad.",".$aux->cargo.",".$aux->sexo.",".$aux->liberado);
+		fwrite($file, $aux->nombre."-".$aux->edad."-".$aux->cargo."-".$aux->sexo."-".$aux->liberado);
 	}
 	fclose($file);
 
 }
 
- public static function TraerTodos()
+ public static function TraerTodos($ruta)
  {
  	$lista=array();
-	if (file_exists("personas.txt"))
+	if (file_exists($ruta))
 	{
-		$file=fopen("personas.txt","r");	
+		$file=fopen($ruta,"r");	
 	}
 	while (!(feof($file)))
 	{

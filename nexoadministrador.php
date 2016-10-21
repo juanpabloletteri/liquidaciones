@@ -78,9 +78,9 @@ if (isset($_POST['borrar']))
 	Persona::BorrarPersonas("personas.txt");
 }
 
-if (isset($_POST['Eliminar']))
+if (isset($_POST['Eliminar'], $_POST['codigo']))
 {
-	Persona::Eliminar($_POST['Eliminar']);
+	Persona::Eliminar($_POST['Eliminar'], $_POST['codigo']);
 	//header("Location: paginadatos.php");
 }
 
