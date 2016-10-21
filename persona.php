@@ -48,13 +48,16 @@ public static function LeerPersonas($codigo)
 	$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th><th>Eliminar</th></tr>";
 	if (file_exists($ruta))
 	{	
+		$suma=0;
 		$cont=0;
 		$archivo=fopen($ruta,"r");
+
 		while (!(feof($archivo)))
 		{
 			
 			$aux=fgets($archivo);
 			$datos=explode("-", $aux);
+			$suma=$suma+$datos[1];
 			$datos[0] = trim($datos[0]);
 			if($datos[0] != "")
 			{
@@ -66,9 +69,10 @@ public static function LeerPersonas($codigo)
 				</tr>";
 			}
 			$cont++;
+
 		}
 	}
-	$tabla.="</table>";
+	$tabla.="<tr><td>Total: </td><td>$".$suma."</td></tr></table>";
 	return $tabla;
 }
 
