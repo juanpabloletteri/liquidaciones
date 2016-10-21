@@ -98,6 +98,9 @@
 				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
 		</form>
 	</div>
+	<div class="login-help">
+		<p><a href="index.html" style="font-size: 15px">Volver al Inicio</a></p>
+	</div>
 
 </section>
 
