@@ -30,10 +30,6 @@ public static function AsignarRuta($codigo)
 	{
 		$ruta="empresas/telecomunicaciones.txt";
 	}
-	elseif ($codigo==0)
-	{
-		$ruta="empresas/todos.txt";
-	}
 	return $ruta;
 }
 
@@ -44,44 +40,78 @@ public static function Guardar($empresa, $monto, $dia, $mes, $ano, $codigo)
 	$file=fopen($ruta,"a");
 	fwrite($file, $empresa."-".$monto."-".$dia."-".$mes."-".$ano."\n");
 	fclose($file);
-
-	$file=fopen("empresas/todos.txt","a");
-	fwrite($file, $empresa."-".$monto."-".$dia."-".$mes."-".$ano."\n");
-	fclose($file);
-
 }
 
 public static function LeerPersonas($codigo)
 {
-	$ruta=Persona::AsignarRuta($codigo);
-	$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th><th>Eliminar</th></tr>";
-	if (file_exists($ruta))
-	{	
-		$suma=0;
-		$cont=0;
-		$archivo=fopen($ruta,"r");
+	if ($codigo!=0)
+	{
+		$ruta=Persona::AsignarRuta($codigo);
+		$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th><th>Eliminar</th></tr>";
+		if (file_exists($ruta))
+		{	
+			$suma=0;
+			$cont=0;
+			$archivo=fopen($ruta,"r");
 
-		while (!(feof($archivo)))
-		{
-			
-			$aux=fgets($archivo);
-			$datos=explode("-", $aux);
-			$suma=$suma+$datos[1];
-			$datos[0] = trim($datos[0]);
-			if($datos[0] != "")
+			while (!(feof($archivo)))
 			{
-				$tabla.="<tr><td>".$datos[0]."</td><td>$".$datos[1]."</td><td>".$datos[2]."</td><td>".$datos[3]."</td><td>".$datos[4]."</td>
-								<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($cont, $codigo)'/>
-								<!-- 
-								<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($cont)' /></td>
-								-->
-				</tr>";
+				
+				$aux=fgets($archivo);
+				$datos=explode("-", $aux);
+				$suma=$suma+$datos[1];
+				$datos[0] = trim($datos[0]);
+				if($datos[0] != "")
+				{
+					$tabla.="<tr><td>".$datos[0]."</td><td>$".$datos[1]."</td><td>".$datos[2]."</td><td>".$datos[3]."</td><td>".$datos[4]."</td>
+									<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($cont, $codigo)'/>
+									<!-- 
+									<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($cont)' /></td>
+									-->
+					</tr>";
+				}
+				$cont++;
+
 			}
-			$cont++;
+		}
+		$tabla.="<tr><td>Total: </td><td>$".$suma."</td></tr></table>";
+	}
+
+	//////////////////////////////////////TODAS LAS EMPRESAS////////////////////////////////////
+	else
+	{
+		$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th></tr>";
+		$suma=0;
+		for ($i=1; $i <= 3; $i++)
+		{ 
+			$ruta=Persona::AsignarRuta($i);
+
+			if (file_exists($ruta))
+			{	
+				
+				$cont=0;
+				$archivo=fopen($ruta,"r");
+
+				while (!(feof($archivo)))
+				{
+					
+					$aux=fgets($archivo);
+					$datos=explode("-", $aux);
+					$suma=$suma+$datos[1];
+					$datos[0] = trim($datos[0]);
+					if($datos[0] != "")
+					{
+						$tabla.="<tr><td>".$datos[0]."</td><td>$".$datos[1]."</td><td>".$datos[2]."</td><td>".$datos[3]."</td><td>".$datos[4]."</td>";
+					}
+					$cont++;
+
+				}
+			}
 
 		}
+			$tabla.="<tr><td>Total: </td><td>$".$suma."</td></tr></table>";
 	}
-	$tabla.="<tr><td>Total: </td><td>$".$suma."</td></tr></table>";
+	//////////////////////////////////////////////////////////////////////////
 	return $tabla;
 }
 
