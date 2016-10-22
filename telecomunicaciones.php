@@ -47,6 +47,8 @@
 			<br>
 			<label>Empresa: </label>
 			<select name="empresa" id="empresa">
+				<option value="Cablevision">Cablevision</option>
+				<option value="Metrotel">Metrotel</option>				
 				<option value="Telefonica">Telefonica</option>
 				<option value="Telecentro">Telecentro</option>
 				<option value="Telmex">Telmex</option>

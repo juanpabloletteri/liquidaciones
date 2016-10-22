@@ -26,9 +26,13 @@ public static function AsignarRuta($codigo)
 	{
 		$ruta="empresas/metrogas.txt";
 	}
-		elseif ($codigo==3)
+	elseif ($codigo==3)
 	{
 		$ruta="empresas/telecomunicaciones.txt";
+	}
+	elseif ($codigo==0)
+	{
+		$ruta="empresas/todos.txt";
 	}
 	return $ruta;
 }
@@ -40,6 +44,11 @@ public static function Guardar($empresa, $monto, $dia, $mes, $ano, $codigo)
 	$file=fopen($ruta,"a");
 	fwrite($file, $empresa."-".$monto."-".$dia."-".$mes."-".$ano."\n");
 	fclose($file);
+
+	$file=fopen("empresas/todos.txt","a");
+	fwrite($file, $empresa."-".$monto."-".$dia."-".$mes."-".$ano."\n");
+	fclose($file);
+
 }
 
 public static function LeerPersonas($codigo)

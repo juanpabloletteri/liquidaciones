@@ -20,7 +20,10 @@ if (isset($_POST['usuario'],$_POST['pass']))
 			{
 				header("Location: telecomunicaciones.php");
 			}
-
+			elseif ($_POST['grupo']=="todos")
+			{
+				header("Location: todos.php");
+			}
 			//header("Location: paginadatos.php");
 			//echo("siiiii");
 		}
