@@ -64,7 +64,8 @@ public static function LeerPersonas($codigo)
 					<tr>
 						<th>  Empresa   </th>
 						<th>  Fecha   </th>	
-						<th>  Monto Liquidacion  </th>				
+						<th>  Monto Liquidacion  </th>
+						<th>  Accion  </th>				
 					</tr> 
 				</thead>";   	
 
@@ -74,6 +75,10 @@ public static function LeerPersonas($codigo)
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".$personaAux->monto."</td>
+							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							
+							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
+							
 						</tr>";
 			}	
 		$tabla.= "</table>";
