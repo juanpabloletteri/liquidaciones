@@ -62,9 +62,8 @@ function agregar(grupo)
 			grupo: grupo,
 		}});
 	f.done(function(r) {
-		//tabla(cod);
+		tabla(grupo);
 		swal("Liquidacion ingresada exitosamente", "", "success");
-		//alert("LLEGO 2");
 		$("#tabla").html("");});	
 }
 
