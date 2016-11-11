@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/style.css">
 
+  <script src="./dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="./dist/sweetalert.css">
 
 	  <script src="funciones.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -42,7 +44,7 @@
 		<h1>Ingreso de datos - EDESUR</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
-			<input type="text" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
+			<input type="number" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
 			<br>
 			<br>
 			<label>Empresa: </label>
@@ -56,11 +58,11 @@
 			<br>
 			<br>
 			<label>Fecha de Ingreso: </label>
-			<input type="date" name="ingreso">
+			<input type="date" name="fecha" id="fecha">
 
 			<br>
 			<br>
-				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
+				<button type="button" class="round medium blue button" onclick="agregar()">Agregar</button>
 		</form>
 	</div>
 	<div class="login-help">

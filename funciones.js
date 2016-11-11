@@ -49,7 +49,7 @@ function Eliminar(indice, cod)
 		$("#tabla").html("");});	
 }
 
-function agregar(cod)
+function agregar()
 {
 	var f=$.ajax({
 		url:"nexoadministrador.php",
@@ -58,13 +58,12 @@ function agregar(cod)
 			boton: "Agregar",
 			monto: $("#monto").val(),
 			empresa: $("#empresa").val(),
-			dia: $("#dia").val(),
-			mes: $("#mes").val(),
-			ano: $("#ano").val(),
-			codigo: cod,
+			fecha: $("#fecha").val(),
 		}});
 	f.done(function(r) {
-		tabla(cod);
+		//tabla(cod);
+		swal("Liquidacion ingresada exitosamente", "", "success");
+		//alert("LLEGO 2");
 		$("#tabla").html("");});	
 }
 

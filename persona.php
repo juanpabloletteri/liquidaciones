@@ -34,12 +34,18 @@ public static function AsignarRuta($codigo)
 }
 
 
-public static function Guardar($empresa, $monto, $dia, $mes, $ano, $codigo)
+public static function Guardar($empresa, $monto, $fecha)
 {
-	$ruta=Persona::AsignarRuta($codigo);
-	$file=fopen($ruta,"a");
-	fwrite($file, $empresa."-".$monto."-".$dia."-".$mes."-".$ano."\n");
-	fclose($file);
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta("
+		INSERT into 
+		empresas (empresa, fecha, monto)
+		values(:empresa, :fecha, :monto)"
+		);
+	$consulta->bindValue(':empresa',$empresa, PDO::PARAM_STR);
+	$consulta->bindValue(':fecha',$fecha, PDO::PARAM_STR);
+	$consulta->bindValue(':monto',$monto, PDO::PARAM_STR);	
+	$consulta->execute();
 }
 
 public static function LeerPersonas($codigo)
