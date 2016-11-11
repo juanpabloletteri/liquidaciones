@@ -55,51 +55,16 @@
 			</select>
 			<br>
 			<br>
+			<label>Fecha de Ingreso: </label>
+			<input type="date" name="ingreso">
 
-			<label>Dia: </label>
-				<select name="dia" id="dia" style='width:15%'>
-		        <?php
-		        for ($i=1; $i<=31; $i++) {
-		            if ($i == date('j'))
-		                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-		            else
-		                echo '<option value="'.$i.'">'.$i.'</option>';
-		        }
-		        ?>
-			</select>
-			
-
-			<label>Mes: </label>
-			<select name="mes" id="mes"  style='width:15%'>
-		        <?php
-		        for ($i=1; $i<=12; $i++) {
-		            if ($i == date('m'))
-		                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-		            else
-		                echo '<option value="'.$i.'">'.$i.'</option>';
-		        }
-		        ?>
-			</select>
-			
-
-			<label>Año: </label>
-			<select name="ano" id="ano" style='width:20%'>
-		        <?php
-		        for($i=date('o'); $i>=2010; $i--){
-		            if ($i == date('o'))
-		                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-		            else
-		                echo '<option value="'.$i.'">'.$i.'</option>';
-		        }
-		        ?>
-			</select>
 			<br>
 			<br>
 				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
 		</form>
 	</div>
 	<div class="login-help">
-		<p><a href="index.html" style="font-size: 15px">Volver al Inicio</a></p>
+		<p><a href="derivacion.php" style="font-size: 15px">Volver atras</a></p>
 	</div>
 
 </section>
