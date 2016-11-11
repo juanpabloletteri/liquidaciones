@@ -50,7 +50,7 @@ if (isset($_POST['boton']))
 	if ($_POST['boton']=="Agregar") 
 	{
 		//echo("agregaaaaa");
-		persona::Guardar($_POST['empresa'],$_POST['monto'],$_POST['fecha']);
+		persona::Guardar($_POST['empresa'],$_POST['monto'],$_POST['fecha'], $_POST['grupo']);
 	}
 
 	if ($_POST['boton']=="Mostrar") 

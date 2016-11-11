@@ -49,7 +49,7 @@ function Eliminar(indice, cod)
 		$("#tabla").html("");});	
 }
 
-function agregar()
+function agregar(grupo)
 {
 	var f=$.ajax({
 		url:"nexoadministrador.php",
@@ -59,6 +59,7 @@ function agregar()
 			monto: $("#monto").val(),
 			empresa: $("#empresa").val(),
 			fecha: $("#fecha").val(),
+			grupo: grupo,
 		}});
 	f.done(function(r) {
 		//tabla(cod);

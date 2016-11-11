@@ -62,7 +62,7 @@
 
 			<br>
 			<br>
-				<button type="button" class="round medium blue button" onclick="agregar()">Agregar</button>
+				<button type="button" class="round medium blue button" onclick="agregar(1)">Agregar</button>
 		</form>
 	</div>
 	<div class="login-help">

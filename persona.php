@@ -34,15 +34,16 @@ public static function AsignarRuta($codigo)
 }
 
 
-public static function Guardar($empresa, $monto, $fecha)
+public static function Guardar($empresa, $monto, $fecha, $grupo)
 {
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 		INSERT into 
-		empresas (empresa, fecha, monto)
-		values(:empresa, :fecha, :monto)"
+		empresas (empresa, grupo, fecha, monto)
+		values(:empresa, :grupo, :fecha, :monto)"
 		);
 	$consulta->bindValue(':empresa',$empresa, PDO::PARAM_STR);
+	$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 	$consulta->bindValue(':fecha',$fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$monto, PDO::PARAM_STR);	
 	$consulta->execute();
