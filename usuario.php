@@ -21,7 +21,7 @@ public static function Guardar($usuario, $mail, $pass)
 	fclose($file);
 }
 
-public static function Buscar($usuario, $pass, $grupo)
+public static function Buscar($usuario, $pass)
 {
 	$todos = file("usuarios.txt", FILE_IGNORE_NEW_LINES + FILE_SKIP_EMPTY_LINES);
 	var_dump($todos);
@@ -32,14 +32,14 @@ public static function Buscar($usuario, $pass, $grupo)
 		{
 			$fecha=date("Y-m-d H:i:s");
 			$file=fopen("log.txt","a");
-			fwrite($file,$usuario."   ".$grupo."   ".$fecha."\n");
+			fwrite($file,$usuario."   ".$fecha."\n");
 			fclose($file);
 			return true;
 		}
 	}
 		$fecha=date("Y-m-d H:i:s");
 		$file=fopen("logFail.txt","a");
-		fwrite($file,$usuario."   ".$pass."   ".$grupo."   ".$fecha."\n");
+		fwrite($file,$usuario."   ".$pass."   ".$fecha."\n");
 		fclose($file);
 	return false;
 

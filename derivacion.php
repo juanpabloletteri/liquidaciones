@@ -7,7 +7,7 @@
 
   <style>
   select {
-    width: 75%;
+    width: 45%;
     padding: 5px 10px;
     border: none;
     border-radius: 8px;
@@ -19,15 +19,18 @@
 <body>
   <section class="container">
     <div class="login">
-      <h1>INGRESO</h1>
+      <h1>Derivacion</h1>
       <form method="post" action="nexoadministrador.php">
-        <p><input type="text" name="usuario" placeholder="Usuario"></p>
-        <p><input type="password" name="pass" placeholder="Password"></p>
-        <p><input type="reset" name="Borrar" value="Borrar Datos"></p>
-        <p class="remember_me">
+        <label>Empresa: </label>
+        <select name="grupo" id="grupo">
+          <option value="edesur">Edesur</option>
+          <option value="metrogas">Metrogas</option>
+          <option value="telecomunicaciones">Telecomunicaciones</option>
+          <option value="todos">Todas las empresas</option>
+        </select>
 
         </p>
-        <p class="submit"><input type="submit" name="boton" value="Ingresar"></p>
+        <p class="submit"><input type="submit" name="boton" value="Ir"></p>
 
       </form>
     </div>
