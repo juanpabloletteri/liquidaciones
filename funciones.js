@@ -8,7 +8,7 @@ function tabla(cod)
 			data:
 			{
 				boton:"Mostrar",
-				codigo: cod,
+				grupo: cod,
 			}
 		}
 	);

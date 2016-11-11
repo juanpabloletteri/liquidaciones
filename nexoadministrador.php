@@ -56,7 +56,7 @@ if (isset($_POST['boton']))
 	if ($_POST['boton']=="Mostrar") 
 	{
 		//echo("muestraaaa");
-		echo(persona::LeerPersonas($_POST['codigo'])) ;
+		echo(persona::LeerPersonas($_POST['grupo'])) ;
 	}
 
 		if ($_POST['boton']=="Modificar") 

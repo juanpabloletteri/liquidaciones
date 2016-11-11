@@ -2,20 +2,19 @@
 
 class Persona
 {
-	public $nombre;
-	public $edad;
-	public $cargo;
-	public $sexo;
-	public $liberado;
+	public $empresa;
+	public $monto;
+	public $fecha;
+	public $grupo;
 
-	function __construct($nombre, $edad, $cargo, $sexo, $liberado)
+	/*function __construct($nombre, $edad, $cargo, $sexo, $liberado)
 	{
 		$this->nombre=$nombre;
 		$this->edad=$edad;
 		$this->cargo=$cargo;	
 		$this->sexo=$sexo;	
 		$this->liberado=$liberado;			
-	}
+	}*/
 public static function AsignarRuta($codigo)
 {
 	if ($codigo==1)
@@ -53,70 +52,59 @@ public static function LeerPersonas($codigo)
 {
 	if ($codigo!=0)
 	{
-		$ruta=Persona::AsignarRuta($codigo);
-		$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th><th>Eliminar</th></tr>";
-		if (file_exists($ruta))
-		{	
-			$suma=0;
-			$cont=0;
-			$archivo=fopen($ruta,"r");
+		
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas where grupo = :grupo");
+		$consulta->bindValue(':grupo',$codigo, PDO::PARAM_STR);
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-			while (!(feof($archivo)))
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  Empresa   </th>
+						<th>  Fecha   </th>	
+						<th>  Monto Liquidacion  </th>				
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
 			{
-				
-				$aux=fgets($archivo);
-				$datos=explode("-", $aux);
-				$suma=$suma+$datos[1];
-				$datos[0] = trim($datos[0]);
-				if($datos[0] != "")
-				{
-					$tabla.="<tr><td>".$datos[0]."</td><td>$".$datos[1]."</td><td>".$datos[2]."</td><td>".$datos[3]."</td><td>".$datos[4]."</td>
-									<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($cont, $codigo)'/>
-									<!-- 
-									<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($cont)' /></td>
-									-->
-					</tr>";
-				}
-				$cont++;
-
-			}
-		}
-		$tabla.="<tr><td>Total: </td><td>$".$suma."</td></tr></table>";
+				$tabla.= " 	<tr>
+							<td>".$personaAux->empresa."</td>
+							<td>".$personaAux->fecha."</td>
+							<td>$ ".$personaAux->monto."</td>
+						</tr>";
+			}	
+		$tabla.= "</table>";
 	}
 
 	//////////////////////////////////////TODAS LAS EMPRESAS////////////////////////////////////
 	else
 	{
-		$tabla="<table style='width:100%' ><tr><th>Empresa</th><th>Monto</th><th>Dia</th><th>Mes</th><th>Año</th></tr>";
-		$suma=0;
-		for ($i=1; $i <= 3; $i++)
-		{ 
-			$ruta=Persona::AsignarRuta($i);
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas ");
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-			if (file_exists($ruta))
-			{	
-				
-				$cont=0;
-				$archivo=fopen($ruta,"r");
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  Empresa   </th>
+						<th>  Fecha   </th>	
+						<th>  Monto Liquidacion  </th>				
+					</tr> 
+				</thead>";   	
 
-				while (!(feof($archivo)))
-				{
-					
-					$aux=fgets($archivo);
-					$datos=explode("-", $aux);
-					$suma=$suma+$datos[1];
-					$datos[0] = trim($datos[0]);
-					if($datos[0] != "")
-					{
-						$tabla.="<tr><td>".$datos[0]."</td><td>$".$datos[1]."</td><td>".$datos[2]."</td><td>".$datos[3]."</td><td>".$datos[4]."</td>";
-					}
-					$cont++;
-
-				}
-			}
-
-		}
-			$tabla.="<tr><td>Total: </td><td>$".$suma."</td></tr></table>";
+			foreach ($array as $personaAux)
+			{
+				$tabla.= " 	<tr>
+							<td>".$personaAux->empresa."</td>
+							<td>".$personaAux->fecha."</td>
+							<td>$ ".$personaAux->monto."</td>
+						</tr>";
+			}	
+		$tabla.= "</table>";
 	}
 	//////////////////////////////////////////////////////////////////////////
 	return $tabla;
