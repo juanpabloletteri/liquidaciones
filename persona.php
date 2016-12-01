@@ -63,14 +63,16 @@ public static function LeerPersonas($codigo)
 				<thead>
 					<tr>
 						<th>  Empresa   </th>
-						<th>  Fecha   </th>	
+						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
-						<th>  Accion  </th>				
+						<th>  Accion  </th>	
+						<th>  Dias impagos  </th>				
 					</tr> 
 				</thead>";   	
 
 			foreach ($array as $personaAux)
 			{
+				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
@@ -78,7 +80,9 @@ public static function LeerPersonas($codigo)
 							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
 							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
-							
+
+							<td>".$tiempo."</td>
+
 						</tr>";
 			}	
 		$tabla.= "</table>";

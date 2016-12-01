@@ -48,6 +48,14 @@
 		<section class="container">
 			<div class="login">
 				<h1>Resumen Liquidaciones - TODOS</h1>
+					<label>Empresa: </label>
+			        <select name="grupo" id="grupo">
+			          <option value="edesur">Edesur</option>
+			          <option value="metrogas">Metrogas</option>
+			          <option value="telecomunicaciones">Telecomunicaciones</option>
+			          <option value="todos">Todas las empresas</option>
+			        </select>
+			        <br><br>
 				<button type="button" class="round medium blue button" onclick="tabla(0)">Mostrar</button>
 			</div>
 			
