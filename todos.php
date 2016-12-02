@@ -56,18 +56,22 @@
 						<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
 						<option value="EdesurMediaBaja">Edesur Media y Baja</option>
 						<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
+						<option value="OtrosEdesur">Otros Edesur</option>
 
 						<option value="Cosugas">Cosugas</option>
 						<option value="EmaServicios">Ema Servicios</option>
 						<option value="Inarteco">Inarteco</option>
+						<option value="OtrosGas">Otros Gas</option>
 
 						<option value="Cablevision">Cablevision</option>
 						<option value="Metrotel">Metrotel</option>				
 						<option value="Telefonica">Telefonica</option>
 						<option value="Telecentro">Telecentro</option>
 						<option value="Telmex">Telmex</option>
+						<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
 
-						<option value="Otros">Otros</option>
+						<option value="CosugasAysa">Cosugas Aysa</option>
+						<option value="OtrosAySA">Otros AySA</option>
 			        </select>
 			        <br><br>
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>

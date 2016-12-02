@@ -26,6 +26,7 @@
           <option value="edesur">Edesur</option>
           <option value="metrogas">Metrogas</option>
           <option value="telecomunicaciones">Telecomunicaciones</option>
+          <option value="aysa">AySA</option>
           <option value="todos">Todas las empresas</option>
         </select>
 

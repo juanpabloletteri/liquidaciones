@@ -38,6 +38,10 @@ if ($_POST['boton']=="Ir")
 			{
 				header("Location: telecomunicaciones.php");
 			}
+			elseif ($_POST['grupo']=="aysa")
+			{
+				header("Location: aysa.php");
+			}
 			elseif ($_POST['grupo']=="todos")
 			{
 				header("Location: todos.php");
