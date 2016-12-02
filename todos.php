@@ -70,6 +70,7 @@
 						<option value="Telefonica">Telefonica</option>
 						<option value="Telecentro">Telecentro</option>
 						<option value="Telmex">Telmex</option>
+						<option value="Telecom">Telecom</option>
 						<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
 
 						<option value="CosugasAysa">Cosugas Aysa</option>

@@ -54,6 +54,7 @@
 				<option value="Telefonica">Telefonica</option>
 				<option value="Telecentro">Telecentro</option>
 				<option value="Telmex">Telmex</option>
+				<option value="Telecom">Telecom</option>
 				<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
 			</select>
 			<br>
