@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 class Persona
 {
 	public $empresa;
@@ -35,16 +35,18 @@ public static function AsignarRuta($codigo)
 
 public static function Guardar($empresa, $monto, $fecha, $grupo)
 {
+	var_dump($_SESSION);
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 		INSERT into 
-		empresas (empresa, grupo, fecha, monto)
-		values(:empresa, :grupo, :fecha, :monto)"
+		empresas (empresa, grupo, fecha, monto, operador)
+		values(:empresa, :grupo, :fecha, :monto, :operador)"
 		);
 	$consulta->bindValue(':empresa',$empresa, PDO::PARAM_STR);
 	$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 	$consulta->bindValue(':fecha',$fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$monto, PDO::PARAM_STR);	
+	$consulta->bindValue(':operador',$_SESSION['usuario'], PDO::PARAM_STR);
 	$consulta->execute();
 }
 

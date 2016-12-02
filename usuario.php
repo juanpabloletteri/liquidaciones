@@ -13,6 +13,38 @@ class Usuario
 		$this->mail=$mail;
 		$this->pass=$pass;
 	}
+public static function login($usuario, $pass)
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("
+				SELECT * 
+				from usuarios 
+				where usuario = :usuario 
+				and 
+				pass = :pass" 
+				);
+			$consulta->bindValue(':usuario',$usuario, PDO::PARAM_STR);
+			$consulta->bindValue(':pass',$pass, PDO::PARAM_STR);
+			$consulta->execute();
+			$resultado = $consulta->fetchAll();
+
+			$ingreso=date("Y-m-d H:i:s");
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("
+				INSERT INTO histlogin 
+				(usuario, ingreso, pass)
+				VALUES (:usuario, :ingreso, :pass) 
+				");
+			$consulta->bindValue(':usuario',$usuario, PDO::PARAM_STR);
+			$consulta->bindValue(':pass',$pass, PDO::PARAM_STR);
+			$consulta->bindValue(':ingreso',$ingreso, PDO::PARAM_STR);
+			$consulta->execute();
+
+
+
+
+			return $resultado;
+	}
 
 public static function Guardar($usuario, $mail, $pass)
 {

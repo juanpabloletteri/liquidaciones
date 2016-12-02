@@ -1,4 +1,5 @@
 <?php
+session_start();
 require ("usuario.php");
 require ("persona.php");
 require ("./clases/AccesoDatos.php");
@@ -8,14 +9,19 @@ if (isset($_POST['boton'], $_POST['usuario'],$_POST['pass']))
 {
 	if ($_POST['boton']=="Ingresar")
 	{
-		if (Usuario::Buscar($_POST['usuario'],$_POST['pass']))
+		$devolucion=usuario::login($_POST['usuario'], $_POST['pass']);
+
+		if ($devolucion!=false)
 		{
+			$_SESSION['usuario']=$devolucion[0]['usuario'];
+			$_SESSION['admin']=$devolucion[0]['admin'];			
 			header("Location: derivacion.php");
 		}
 		else
 		{
 			header("Location: index.html");
 		}
+
 	}
 	elseif ($_POST['boton']=="Crear Cuenta") 
 	{
