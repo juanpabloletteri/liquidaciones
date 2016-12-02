@@ -52,7 +52,7 @@ public static function LeerPersonas($codigo)
 {
 	if ($codigo!=0)
 	{
-		
+		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas where grupo = :grupo");
 		$consulta->bindValue(':grupo',$codigo, PDO::PARAM_STR);
@@ -73,6 +73,7 @@ public static function LeerPersonas($codigo)
 			foreach ($array as $personaAux)
 			{
 				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
+				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
@@ -85,12 +86,15 @@ public static function LeerPersonas($codigo)
 
 						</tr>";
 			}	
+		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td>$ ".$total."</td>";
 		$tabla.= "</table>";
 	}
 
 	//////////////////////////////////////TODAS LAS EMPRESAS////////////////////////////////////
 	else
 	{
+		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas ");
 		$consulta->execute();			
@@ -107,12 +111,15 @@ public static function LeerPersonas($codigo)
 
 			foreach ($array as $personaAux)
 			{
+				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".$personaAux->monto."</td>
 						</tr>";
-			}	
+			}
+		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td>$ ".$total."</td>";	
 		$tabla.= "</table>";
 	}
 	//////////////////////////////////////////////////////////////////////////
@@ -122,7 +129,7 @@ public static function LeerPersonas($codigo)
 public static function LeerPersonasTodos($grupo)
 {
 
-		
+		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas where empresa = :grupo");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
@@ -143,6 +150,7 @@ public static function LeerPersonasTodos($grupo)
 			foreach ($array as $personaAux)
 			{
 				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
+				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
@@ -155,6 +163,8 @@ public static function LeerPersonasTodos($grupo)
 
 						</tr>";
 			}	
+		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td>$ ".$total."</td>";
 		$tabla.= "</table>";
 
 	return $tabla;
@@ -163,7 +173,7 @@ public static function LeerPersonasTodos($grupo)
 public static function archivados($grupo)
 {
 
-		
+		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from historial where empresa = :grupo");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
@@ -176,26 +186,26 @@ public static function archivados($grupo)
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
-						<th>  Accion  </th>	
 						<th>  Dias impagos  </th>				
 					</tr> 
 				</thead>";   	
 
 			foreach ($array as $personaAux)
 			{
-				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
+				//var_dump($personaAux);
+				$tiempo=round((strtotime('now') - strtotime($personaAux->ingreso))/60/60/24);
+				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
-							<td>".$personaAux->fecha."</td>
+							<td>".$personaAux->ingreso."</td>
 							<td>$ ".$personaAux->monto."</td>
-							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
-							
-							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 
 						</tr>";
 			}	
+		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td>$ ".$total."</td>";
 		$tabla.= "</table>";
 
 	return $tabla;

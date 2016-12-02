@@ -70,9 +70,9 @@
 						<option value="Otros">Otros</option>
 			        </select>
 			        <br><br>
-				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Mostrar</button>
+				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
 
-				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivados</button>
+				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
 			</div>
 			
 			<div class="login" id="tablapersonas">

@@ -88,7 +88,7 @@ function Eliminar(indice)
 		}});
 	f.done(function(r) {
 		swal("Liquidacion archivada exitosamente", "", "success");
-		tabla(cod);
+		tablaTodos(cod);
 		$("#tabla").html("");});	
 }
 
