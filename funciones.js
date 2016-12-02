@@ -89,7 +89,6 @@ function Eliminar(indice)
 	
 	f.done(function(r) {
 		swal("Liquidacion archivada exitosamente", "", "success");
-		debugger;
 		tabla($("#subgrupo").val());
 		$("#tabla").html("");});	
 }
