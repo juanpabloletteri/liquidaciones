@@ -174,18 +174,21 @@ public static function Eliminar($indice)
 	$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where id = :indice");
 	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
 	$consulta->execute();
+	$eliminado=$consulta->fetchAll(PDO::FETCH_CLASS, "persona");
+	var_dump($eliminado);
 
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-	$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into
-	 historial
-	 () 
-	 values ()");
-
-	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
+	$consulta =$objetoAccesoDato->RetornarConsulta("
+	INSERT into
+	historial (empresa, ingreso, monto) 
+	values (:empresa, :ingreso, :monto)");
+	$consulta->bindValue(':empresa',$eliminado[0]->empresa, PDO::PARAM_STR);
+	$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
+	$consulta->bindValue(':monto',$eliminado[0]->monto, PDO::PARAM_STR);
 	$consulta->execute();
 
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-	$consulta =$objetoAccesoDato->RetornarConsulta("DELETE * from empresas where id = :indice");
+	$consulta =$objetoAccesoDato->RetornarConsulta("DELETE from empresas where id = :indice");
 	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
 	$consulta->execute();
 
