@@ -45,7 +45,7 @@ public static function login($usuario, $pass)
 
 			return $resultado;
 	}
-
+/////DE LA VERSION VIEJA GUARDAR LEER DE TXT//////////////////
 public static function Guardar($usuario, $mail, $pass)
 {
 	$file=fopen("usuarios.txt","a");
@@ -56,7 +56,7 @@ public static function Guardar($usuario, $mail, $pass)
 public static function Buscar($usuario, $pass)
 {
 	$todos = file("usuarios.txt", FILE_IGNORE_NEW_LINES + FILE_SKIP_EMPTY_LINES);
-	var_dump($todos);
+	//var_dump($todos);
 
 	foreach ($todos as $uno)
 	{

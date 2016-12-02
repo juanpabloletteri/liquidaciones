@@ -35,7 +35,7 @@ public static function AsignarRuta($codigo)
 
 public static function Guardar($empresa, $monto, $fecha, $grupo)
 {
-	var_dump($_SESSION);
+	//var_dump($_SESSION);
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 		INSERT into 
@@ -273,16 +273,17 @@ public static function Eliminar($indice)
 	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
 	$consulta->execute();
 	$eliminado=$consulta->fetchAll(PDO::FETCH_CLASS, "persona");
-	var_dump($eliminado);
+	//var_dump($eliminado);
 
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 	INSERT into
-	historial (empresa, ingreso, monto) 
-	values (:empresa, :ingreso, :monto)");
+	historial (empresa, ingreso, monto, operador) 
+	values (:empresa, :ingreso, :monto, :operador)");
 	$consulta->bindValue(':empresa',$eliminado[0]->empresa, PDO::PARAM_STR);
 	$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$eliminado[0]->monto, PDO::PARAM_STR);
+	$consulta->bindValue(':operador',$_SESSION['usuario'], PDO::PARAM_STR);
 	$consulta->execute();
 
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 

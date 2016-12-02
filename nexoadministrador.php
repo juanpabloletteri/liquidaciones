@@ -52,7 +52,7 @@ if ($_POST['boton']=="Ir")
 			{
 				header("Location: todos.php");
 			}
-			var_dump($_POST);
+			//var_dump($_POST);
 }
 ////////////////////INRGESO///////////////////
 if (isset($_POST['boton']))
