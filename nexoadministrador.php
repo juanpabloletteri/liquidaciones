@@ -65,6 +65,12 @@ if (isset($_POST['boton']))
 		echo(persona::LeerPersonasTodos($_POST['grupo'])) ;
 	}
 
+	if ($_POST['boton']=="archivados") 
+	{
+		//echo("muestraaaa");
+		echo(persona::archivados($_POST['grupo'])) ;
+	}
+
 	if ($_POST['boton']=="Modificar") 
 	{
 		//echo("muestraaaa");

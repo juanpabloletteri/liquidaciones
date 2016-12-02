@@ -40,7 +40,9 @@
 <section class="container">
 
 		<div class="login-help">
-		<p><a href="index.html" style="font-size: 15px">Volver al Inicio</a></p>
+			<div class="login-help">
+		<p><a href="derivacion.php" style="font-size: 15px">Volver atras</a></p>
+	</div>
 	</div>
 </section>
 <div>
@@ -69,6 +71,8 @@
 			        </select>
 			        <br><br>
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Mostrar</button>
+
+				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivados</button>
 			</div>
 			
 			<div class="login" id="tablapersonas">

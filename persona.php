@@ -160,6 +160,48 @@ public static function LeerPersonasTodos($grupo)
 	return $tabla;
 }
 
+public static function archivados($grupo)
+{
+
+		
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from historial where empresa = :grupo");
+		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
+
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  Empresa   </th>
+						<th>  Fecha Liquidacion   </th>	
+						<th>  Monto Liquidacion  </th>
+						<th>  Accion  </th>	
+						<th>  Dias impagos  </th>				
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
+				$tabla.= " 	<tr>
+							<td>".$personaAux->empresa."</td>
+							<td>".$personaAux->fecha."</td>
+							<td>$ ".$personaAux->monto."</td>
+							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							
+							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
+
+							<td>".$tiempo."</td>
+
+						</tr>";
+			}	
+		$tabla.= "</table>";
+
+	return $tabla;
+}
+
+
 public static function BorrarPersonas($ruta)
 {
 	if (file_exists($ruta))

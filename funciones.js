@@ -43,7 +43,28 @@ function tablaTodos(cod)
 		}
 	);	
 }
-
+function archivados(cod)
+{
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"archivados",
+				grupo: $("#grupo").val(),
+			}
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+}
 function borrar()
 {
 	var f=$.ajax({
@@ -66,7 +87,7 @@ function Eliminar(indice)
 			Eliminar: indice
 		}});
 	f.done(function(r) {
-		alert("eliminado");
+		swal("Liquidacion archivada exitosamente", "", "success");
 		tabla(cod);
 		$("#tabla").html("");});	
 }
