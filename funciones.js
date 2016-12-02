@@ -21,6 +21,29 @@ function tabla(cod)
 	);	
 }
 
+function tablaTodos(cod)
+{
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"MostrarTodos",
+				grupo: $("#grupo").val(),
+			}
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+}
+
 function borrar()
 {
 	var f=$.ajax({
@@ -34,14 +57,13 @@ function borrar()
 		$("#tabla").html("");});	
 }
 
-function Eliminar(indice, cod)
+function Eliminar(indice)
 {
 	var f=$.ajax({
 		url:"nexoadministrador.php",
 		type:"post",
 		data:{
-			Eliminar: indice,
-			codigo:cod,
+			Eliminar: indice
 		}});
 	f.done(function(r) {
 		alert("eliminado");

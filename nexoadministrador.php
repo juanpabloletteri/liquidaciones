@@ -59,7 +59,13 @@ if (isset($_POST['boton']))
 		echo(persona::LeerPersonas($_POST['grupo'])) ;
 	}
 
-		if ($_POST['boton']=="Modificar") 
+	if ($_POST['boton']=="MostrarTodos") 
+	{
+		//echo("muestraaaa");
+		echo(persona::LeerPersonasTodos($_POST['grupo'])) ;
+	}
+
+	if ($_POST['boton']=="Modificar") 
 	{
 		//echo("muestraaaa");
 		echo(persona::LeerPersonas()) ;
@@ -72,9 +78,9 @@ if (isset($_POST['borrar']))
 	Persona::BorrarPersonas("personas.txt");
 }
 
-if (isset($_POST['Eliminar'], $_POST['codigo']))
+if (isset($_POST['Eliminar']))
 {
-	Persona::Eliminar($_POST['Eliminar'], $_POST['codigo']);
+	Persona::Eliminar($_POST['Eliminar']);
 	//header("Location: paginadatos.php");
 }
 

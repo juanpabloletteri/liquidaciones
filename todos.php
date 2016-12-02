@@ -50,13 +50,25 @@
 				<h1>Resumen Liquidaciones - TODOS</h1>
 					<label>Empresa: </label>
 			        <select name="grupo" id="grupo">
-			          <option value="edesur">Edesur</option>
-			          <option value="metrogas">Metrogas</option>
-			          <option value="telecomunicaciones">Telecomunicaciones</option>
-			          <option value="todos">Todas las empresas</option>
+						<option value="EdesurAlta">Edesur Alta</option>
+						<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
+						<option value="EdesurMediaBaja">Edesur Media y Baja</option>
+						<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
+
+						<option value="Cosugas">Cosugas</option>
+						<option value="EmaServicios">Ema Servicios</option>
+						<option value="Inarteco">Inarteco</option>
+
+						<option value="Cablevision">Cablevision</option>
+						<option value="Metrotel">Metrotel</option>				
+						<option value="Telefonica">Telefonica</option>
+						<option value="Telecentro">Telecentro</option>
+						<option value="Telmex">Telmex</option>
+
+						<option value="Otros">Otros</option>
 			        </select>
 			        <br><br>
-				<button type="button" class="round medium blue button" onclick="tabla(0)">Mostrar</button>
+				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Mostrar</button>
 			</div>
 			
 			<div class="login" id="tablapersonas">
