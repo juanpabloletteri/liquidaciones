@@ -59,6 +59,7 @@
 			<br>
 			<label>Fecha de Ingreso: </label>
 			<input type="date" name="fecha" id="fecha">
+			
 
 			<br>
 			<br>
@@ -78,6 +79,7 @@
 			<div class="login">
 				<h1>Resumen Liquidaciones - EDESUR</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(1)">Mostrar</button>
+				<input type="hidden" id="subgrupo" value=1>
 			</div>
 				<div class="login" id="tablapersonas">
 			</div>	

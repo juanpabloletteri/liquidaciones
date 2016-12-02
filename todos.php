@@ -82,6 +82,8 @@
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
 
 				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
+
+				<input type="hidden" id="subgrupo" value=0>
 			</div>
 			
 			<div class="login" id="tablapersonas">

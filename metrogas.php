@@ -77,6 +77,7 @@
 			<div class="login">
 				<h1>Resumen Liquidaciones - METROGAS</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(2)">Mostrar</button>
+				<input type="hidden" id="subgrupo" value=2>
 			</div>
 				<div class="login" id="tablapersonas">
 			</div>	

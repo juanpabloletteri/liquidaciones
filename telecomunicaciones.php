@@ -80,6 +80,7 @@
 			<div class="login">
 				<h1>Resumen Liquidaciones - Telecomunicaciones</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(3)">Mostrar</button>
+				<input type="hidden" id="subgrupo" value=3>
 			</div>
 				<div class="login" id="tablapersonas">
 			</div>	
