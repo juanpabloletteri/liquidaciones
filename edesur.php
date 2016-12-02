@@ -53,7 +53,7 @@
 				<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
 				<option value="EdesurMediaBaja">Edesur Media y Baja</option>
 				<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
-				<option value="Otros">Otros</option>
+				<option value="OtrosEdesur">Otros Edesur</option>
 			</select>
 			<br>
 			<br>

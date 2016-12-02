@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/style.css">
 
+  <script src="./dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="./dist/sweetalert.css">
 
 	  <script src="funciones.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -42,7 +44,7 @@
 		<h1>Ingreso de datos - METROGAS</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
-			<input type="text" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
+			<input type="number" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
 			<br>
 			<br>
 			<label>Empresa: </label>
@@ -50,57 +52,25 @@
 				<option value="Cosugas">Cosugas</option>
 				<option value="EmaServicios">Ema Servicios</option>
 				<option value="Inarteco">Inarteco</option>
-				<option value="Otros">Otros</option>
+				<option value="OtrosGas">Otros Gas</option>
 			</select>
 			<br>
 			<br>
+			<label>Fecha de Ingreso: </label>
+			<input type="date" name="fecha" id="fecha">
 
-			<label>Dia: </label>
-				<select name="dia" id="dia" style='width:15%'>
-		        <?php
-		        for ($i=1; $i<=31; $i++) {
-		            if ($i == date('j'))
-		                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-		            else
-		                echo '<option value="'.$i.'">'.$i.'</option>';
-		        }
-		        ?>
-			</select>
-			
-
-			<label>Mes: </label>
-			<select name="mes" id="mes"  style='width:15%'>
-		        <?php
-		        for ($i=1; $i<=12; $i++) {
-		            if ($i == date('m'))
-		                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-		            else
-		                echo '<option value="'.$i.'">'.$i.'</option>';
-		        }
-		        ?>
-			</select>
-			
-
-			<label>Año: </label>
-			<select name="ano" id="ano" style='width:20%'>
-		        <?php
-		        for($i=date('o'); $i>=2010; $i--){
-		            if ($i == date('o'))
-		                echo '<option value="'.$i.'" selected>'.$i.'</option>';
-		            else
-		                echo '<option value="'.$i.'">'.$i.'</option>';
-		        }
-		        ?>
-			</select>
 			<br>
 			<br>
 				<button type="button" class="round medium blue button" onclick="agregar(2)">Agregar</button>
 		</form>
 	</div>
-		<div class="login-help">
-		<p><a href="index.html" style="font-size: 15px">Volver al Inicio</a></p>
+	<div class="login-help">
+		<p><a href="derivacion.php" style="font-size: 15px">Volver atras</a></p>
 	</div>
+
 </section>
+
+
 <div>
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
@@ -108,9 +78,9 @@
 				<h1>Resumen Liquidaciones - METROGAS</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(2)">Mostrar</button>
 			</div>
-			
-			<div class="login" id="tablapersonas">
+				<div class="login" id="tablapersonas">
 			</div>	
+
 
 		</section>
 	</form>
