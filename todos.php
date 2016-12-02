@@ -5,8 +5,10 @@
   <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/style.css">
 
+  <script src="./dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="./dist/sweetalert.css">
 
-	  <script src="funciones.js"></script>
+	  <script src="./funciones.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<style>

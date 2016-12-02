@@ -218,8 +218,46 @@ else
 
 public static function archivados($grupo)
 {
+	if ($grupo=="todos")
+	{
+				$total=0;
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from historial");
+		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$total=0;
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  Empresa   </th>
+						<th>  Fecha Liquidacion   </th>	
+						<th>  Monto Liquidacion  </th>
+						<th>  Dias impagos  </th>				
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+				//var_dump($personaAux);
+				$tiempo=round((strtotime('now') - strtotime($personaAux->ingreso))/60/60/24);
+				$total+=$personaAux->monto;
+				$tabla.= " 	<tr>
+							<td>".$personaAux->empresa."</td>
+							<td>".$personaAux->ingreso."</td>
+							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
+
+							<td>".$tiempo."</td>
+
+						</tr>";
+			}	
+		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
+		$tabla.= "</table>";
+	}
+	else
+	{
+				$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from historial where empresa = :grupo");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
@@ -253,6 +291,9 @@ public static function archivados($grupo)
 		$tabla.="<td> Total </td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
+	}
+
+
 
 	return $tabla;
 }
