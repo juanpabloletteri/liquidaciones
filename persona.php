@@ -79,7 +79,7 @@ public static function LeerPersonas($codigo)
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
-							<td>$ ".$personaAux->monto."</td>
+							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
 							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
 							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
@@ -89,7 +89,7 @@ public static function LeerPersonas($codigo)
 						</tr>";
 			}	
 		$tabla.="<td> Total </td> <td></td>";
-		$tabla.="<td>$ ".$total."</td>";
+		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 	}
 
@@ -130,8 +130,49 @@ public static function LeerPersonas($codigo)
 
 public static function LeerPersonasTodos($grupo)
 {
+if ($grupo=="todos")
+{
+			$total=0;
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas");
+		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$total=0;
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  Empresa   </th>
+						<th>  Fecha Liquidacion   </th>	
+						<th>  Monto Liquidacion  </th>
+						<th>  Accion  </th>	
+						<th>  Dias impagos  </th>				
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
+				$total+=$personaAux->monto;
+				$tabla.= " 	<tr>
+							<td>".$personaAux->empresa."</td>
+							<td>".$personaAux->fecha."</td>
+							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
+							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							
+							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
+
+							<td>".$tiempo."</td>
+
+						</tr>";
+			}	
+		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
+		$tabla.= "</table>";
+}
+else
+{
+			$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas where empresa = :grupo");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
@@ -156,7 +197,7 @@ public static function LeerPersonasTodos($grupo)
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
-							<td>$ ".$personaAux->monto."</td>
+							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
 							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
 							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
@@ -166,8 +207,11 @@ public static function LeerPersonasTodos($grupo)
 						</tr>";
 			}	
 		$tabla.="<td> Total </td> <td></td>";
-		$tabla.="<td>$ ".$total."</td>";
+		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
+}
+		
+
 
 	return $tabla;
 }
@@ -200,14 +244,14 @@ public static function archivados($grupo)
 				$tabla.= " 	<tr>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->ingreso."</td>
-							<td>$ ".$personaAux->monto."</td>
+							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
 
 							<td>".$tiempo."</td>
 
 						</tr>";
 			}	
 		$tabla.="<td> Total </td> <td></td>";
-		$tabla.="<td>$ ".$total."</td>";
+		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 
 	return $tabla;

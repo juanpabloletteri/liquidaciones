@@ -72,6 +72,8 @@
 
 						<option value="CosugasAysa">Cosugas Aysa</option>
 						<option value="OtrosAySA">Otros AySA</option>
+
+						<option value="todos">TODAS LAS EMPRESAS</option>
 			        </select>
 			        <br><br>
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
