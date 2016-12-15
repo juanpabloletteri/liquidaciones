@@ -93,6 +93,20 @@ function Eliminar(indice)
 		$("#tabla").html("");});	
 }
 
+function EliminarDefinitivo(indice)
+{
+	var f=$.ajax({
+		url:"nexoadministrador.php",
+		type:"post",
+		data:{
+			EliminarDefinitivo: indice
+		}});
+	
+	f.done(function(r) {
+		swal("Liquidacion eliminada exitosamente", "", "success");
+		tabla($("#subgrupo").val());
+		$("#tabla").html("");});	
+}
 function agregar(grupo)
 {
 	var f=$.ajax({

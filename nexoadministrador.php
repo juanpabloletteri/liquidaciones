@@ -100,4 +100,9 @@ if (isset($_POST['Eliminar']))
 	//header("Location: paginadatos.php");
 }
 
+if (isset($_POST['EliminarDefinitivo']))
+{
+	Persona::EliminarDefinitivo($_POST['EliminarDefinitivo']);
+	//header("Location: paginadatos.php");
+}
 ?>

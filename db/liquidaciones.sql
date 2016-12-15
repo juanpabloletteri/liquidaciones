@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2016 a las 16:22:44
+-- Tiempo de generación: 15-12-2016 a las 16:02:19
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `liquidaciones`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eliminadas`
+--
+
+CREATE TABLE `eliminadas` (
+  `id` int(11) NOT NULL,
+  `empresa` varchar(50) NOT NULL,
+  `ingreso` date NOT NULL,
+  `monto` int(11) NOT NULL,
+  `operador` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `eliminadas`
+--
+
+INSERT INTO `eliminadas` (`id`, `empresa`, `ingreso`, `monto`, `operador`) VALUES
+(1, 'EdesurAlta', '2016-11-27', 11111, '1');
 
 -- --------------------------------------------------------
 
@@ -40,10 +61,7 @@ CREATE TABLE `empresas` (
 --
 
 INSERT INTO `empresas` (`id`, `empresa`, `grupo`, `fecha`, `monto`, `operador`) VALUES
-(3, 'EdesurAlta', 1, '2016-11-06', 1233120, ''),
-(4, 'EdesurAlta', 1, '2016-11-06', 1233120, ''),
-(5, 'EdesurAlta', 1, '2016-11-06', 1233120, ''),
-(6, 'EdesurTelecomunicaciones', 1, '2016-11-06', 1233120, '');
+(26, 'EdesurAlta', 1, '2016-11-27', 11111, '1');
 
 -- --------------------------------------------------------
 
@@ -63,7 +81,16 @@ CREATE TABLE `histlogin` (
 --
 
 INSERT INTO `histlogin` (`id`, `usuario`, `ingreso`, `pass`) VALUES
-(1, '1', '2016-12-02 14:47:30', '1');
+(1, '1', '2016-12-02 14:47:30', '1'),
+(2, '1', '2016-12-02 17:01:20', '1'),
+(3, '1', '2016-12-02 17:01:42', '1'),
+(4, 'octavio@admin.com.ar', '2016-12-02 19:21:22', '1234'),
+(5, 'octavio@admin.com.ar', '2016-12-02 19:21:22', '1234'),
+(6, '12211', '2016-12-02 19:21:25', '1'),
+(7, 'juan pablo', '2016-12-02 19:21:32', '1'),
+(8, 'juan pablo', '2016-12-02 19:21:39', '31192'),
+(9, '1', '2016-12-02 19:22:19', '1'),
+(10, '1', '2016-12-15 14:32:11', '1');
 
 -- --------------------------------------------------------
 
@@ -97,9 +124,7 @@ CREATE TABLE `historial` (
 --
 
 INSERT INTO `historial` (`id`, `empresa`, `ingreso`, `monto`, `operador`) VALUES
-(1, 'EdesurTelecomunicaciones', '2016-11-08', 1233, '1'),
-(2, 'EdesurTelecomunicaciones', '2016-11-08', 23333, '1'),
-(3, 'EdesurAlta', '2016-11-29', 123, '1');
+(1, 'EdesurAlta', '2016-11-27', 11111, '1');
 
 -- --------------------------------------------------------
 
@@ -124,6 +149,12 @@ INSERT INTO `usuarios` (`id`, `usuario`, `pass`, `admin`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `eliminadas`
+--
+ALTER TABLE `eliminadas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `empresas`
@@ -160,15 +191,20 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `eliminadas`
+--
+ALTER TABLE `eliminadas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `empresas`
 --
 ALTER TABLE `empresas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `histlogin`
 --
 ALTER TABLE `histlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `histloginfail`
 --
@@ -178,7 +214,7 @@ ALTER TABLE `histloginfail`
 -- AUTO_INCREMENT de la tabla `historial`
 --
 ALTER TABLE `historial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

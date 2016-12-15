@@ -80,9 +80,9 @@ public static function LeerPersonas($codigo)
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							<td><input type='button' class='round medium green button' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
-							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
+							<input type='button' class='round medium orange button' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 
@@ -158,9 +158,9 @@ if ($grupo=="todos")
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							<td><input type='button' class='round medium green button' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
-							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
+							<input type='button' class='round medium orange button' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 
@@ -198,9 +198,9 @@ else
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='round medium orange button' value='Eliminar' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							<td><input type='button' class='round medium green button' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
-							<input type='button' class='round medium green button' value='Modificar' id='btnModificar' onclick='Modificar($personaAux->id)' /></td>
+							<input type='button' class='round medium orange button' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 
@@ -331,7 +331,32 @@ public static function Eliminar($indice)
 	$consulta =$objetoAccesoDato->RetornarConsulta("DELETE from empresas where id = :indice");
 	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
 	$consulta->execute();
+}
 
+public static function EliminarDefinitivo($indice)
+{
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where id = :indice");
+	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
+	$consulta->execute();
+	$eliminado=$consulta->fetchAll(PDO::FETCH_CLASS, "persona");
+	//var_dump($eliminado);
+
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta("
+	INSERT into
+	eliminadas (empresa, ingreso, monto, operador) 
+	values (:empresa, :ingreso, :monto, :operador)");
+	$consulta->bindValue(':empresa',$eliminado[0]->empresa, PDO::PARAM_STR);
+	$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
+	$consulta->bindValue(':monto',$eliminado[0]->monto, PDO::PARAM_STR);
+	$consulta->bindValue(':operador',$_SESSION['usuario'], PDO::PARAM_STR);
+	$consulta->execute();
+
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta("DELETE from empresas where id = :indice");
+	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
+	$consulta->execute();
 }
 
  public static function TraerTodos($ruta)
