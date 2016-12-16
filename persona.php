@@ -56,7 +56,7 @@ public static function LeerPersonas($codigo)
 	{
 		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas where grupo = :grupo");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where grupo = :grupo ORDER BY empresa");
 		$consulta->bindValue(':grupo',$codigo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -98,7 +98,7 @@ public static function LeerPersonas($codigo)
 	{
 		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas ");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas ORDER By empresa");
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
@@ -134,7 +134,7 @@ if ($grupo=="todos")
 {
 			$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -174,7 +174,7 @@ else
 {
 			$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from empresas where empresa = :grupo");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where empresa = :grupo ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -222,7 +222,7 @@ public static function archivados($grupo)
 	{
 				$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from historial");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from historial ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -259,7 +259,7 @@ public static function archivados($grupo)
 	{
 				$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from historial where empresa = :grupo");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from historial where empresa = :grupo ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
