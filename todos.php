@@ -63,6 +63,9 @@ if (!isset($_SESSION['usuario']))
 				<h1>Resumen Liquidaciones - TODOS</h1>
 					<label>Empresa: </label>
 			        <select name="grupo" id="grupo">
+
+						<option value="todos">TODAS LAS EMPRESAS</option>
+
 						<option value="EdesurAlta">Edesur Alta</option>
 						<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
 						<option value="EdesurMediaBaja">Edesur Media y Baja</option>
@@ -85,13 +88,12 @@ if (!isset($_SESSION['usuario']))
 						<option value="CosugasAysa">Cosugas Aysa</option>
 						<option value="OtrosAySA">Otros AySA</option>
 
-						<option value="todos">TODAS LAS EMPRESAS</option>
 			        </select>
 			        <br><br>
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
 
 				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
-				
+
 				<select name="anio" id="anio">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
