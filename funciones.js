@@ -114,6 +114,7 @@ function agregar(grupo)
 		type:"post",
 		data:{
 			boton: "Agregar",
+			numero: $("#numero").val(),
 			monto: $("#monto").val(),
 			empresa: $("#empresa").val(),
 			fecha: $("#fecha").val(),

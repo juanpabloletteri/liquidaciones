@@ -46,11 +46,18 @@ if (!isset($_SESSION['usuario']))
 </head>
 <body>
 
+			<div class="login">
+				<h1>Bienvenido <?php 	echo($_SESSION['usuario']) ?></h1>
+			</div>
+
+
 <section class="container">
 	<div class="login">
 		<h1>Ingreso de datos - EDESUR</h1>
 
-		<form id="form" action="nexoadministrador.php" method="post" >
+		<form id="form" action="nexoadministrador.php" method="post">
+			<input type="number" name="numero" id="numero" placeholder="Liquidacion Numero"> (Numero de Liquidacion)
+			<br><br>
 			<input type="number" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
 			<br>
 			<br>
@@ -86,6 +93,10 @@ if (!isset($_SESSION['usuario']))
 			<div class="login">
 				<h1>Resumen Liquidaciones - EDESUR</h1>
 				<button type="button" class="round medium blue button" onclick="tabla(1)">Mostrar</button>
+				<select name="anio" id="anio">
+					<option value=2015>2015	</option>
+					<option value=2016>2016	</option>
+				</select>
 				<input type="hidden" id="subgrupo" value=1>
 			</div>
 				<div class="login" id="tablapersonas">

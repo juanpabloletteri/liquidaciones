@@ -2,11 +2,12 @@
 //session_start();
 class Persona
 {
+	public $numero;
 	public $empresa;
 	public $monto;
 	public $fecha;
 	public $grupo;
-
+	
 	/*function __construct($nombre, $edad, $cargo, $sexo, $liberado)
 	{
 		$this->nombre=$nombre;
@@ -33,15 +34,16 @@ public static function AsignarRuta($codigo)
 }
 
 
-public static function Guardar($empresa, $monto, $fecha, $grupo)
+public static function Guardar($numero,$empresa, $monto, $fecha, $grupo)
 {
 	//var_dump($_SESSION);
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 		INSERT into 
-		empresas (empresa, grupo, fecha, monto, operador)
-		values(:empresa, :grupo, :fecha, :monto, :operador)"
+		empresas (numero, empresa, grupo, fecha, monto, operador)
+		values(:numero, :empresa, :grupo, :fecha, :monto, :operador)"
 		);
+	$consulta->bindValue(':numero',$numero, PDO::PARAM_STR);
 	$consulta->bindValue(':empresa',$empresa, PDO::PARAM_STR);
 	$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 	$consulta->bindValue(':fecha',$fecha, PDO::PARAM_STR);
@@ -52,11 +54,13 @@ public static function Guardar($empresa, $monto, $fecha, $grupo)
 
 public static function LeerPersonas($codigo)
 {
+	$anio=2015;
+
 	if ($codigo!=0)
 	{
 		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where grupo = :grupo ORDER BY empresa");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where grupo = :grupo and fecha like '%$anio%' ORDER BY empresa ");
 		$consulta->bindValue(':grupo',$codigo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -64,6 +68,7 @@ public static function LeerPersonas($codigo)
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
+						<th>  Numero OOO   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
@@ -77,6 +82,7 @@ public static function LeerPersonas($codigo)
 				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
 				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
@@ -105,6 +111,7 @@ public static function LeerPersonas($codigo)
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
+						<th>  Numero   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha   </th>	
 						<th>  Monto Liquidacion  </th>				
@@ -115,6 +122,7 @@ public static function LeerPersonas($codigo)
 			{
 				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".$personaAux->monto."</td>
@@ -142,6 +150,7 @@ if ($grupo=="todos")
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
+						<th>  Numero   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
@@ -155,6 +164,7 @@ if ($grupo=="todos")
 				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
 				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
@@ -182,6 +192,7 @@ else
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
+						<th>  Numero   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
@@ -195,6 +206,7 @@ else
 				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
 				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
@@ -230,6 +242,7 @@ public static function archivados($grupo)
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
+						<th>  Numero   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
@@ -243,6 +256,7 @@ public static function archivados($grupo)
 				$tiempo=round((strtotime('now') - strtotime($personaAux->ingreso))/60/60/24);
 				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->ingreso."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
@@ -267,6 +281,7 @@ public static function archivados($grupo)
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
+						<th>  Numero   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
@@ -280,6 +295,7 @@ public static function archivados($grupo)
 				$tiempo=round((strtotime('now') - strtotime($personaAux->ingreso))/60/60/24);
 				$total+=$personaAux->monto;
 				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->ingreso."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
@@ -319,8 +335,9 @@ public static function Eliminar($indice)
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 	INSERT into
-	historial (empresa, ingreso, monto, operador) 
-	values (:empresa, :ingreso, :monto, :operador)");
+	historial (numero, empresa, ingreso, monto, operador) 
+	values (:numero, :empresa, :ingreso, :monto, :operador)");
+	$consulta->bindValue(':numero',$eliminado[0]->numero, PDO::PARAM_STR);
 	$consulta->bindValue(':empresa',$eliminado[0]->empresa, PDO::PARAM_STR);
 	$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$eliminado[0]->monto, PDO::PARAM_STR);
@@ -345,8 +362,9 @@ public static function EliminarDefinitivo($indice)
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
 	INSERT into
-	eliminadas (empresa, ingreso, monto, operador) 
-	values (:empresa, :ingreso, :monto, :operador)");
+	eliminadas (numero, empresa, ingreso, monto, operador) 
+	values (:numero, :empresa, :ingreso, :monto, :operador)");
+	$consulta->bindValue(':numero',$eliminado[0]->numero, PDO::PARAM_STR);
 	$consulta->bindValue(':empresa',$eliminado[0]->empresa, PDO::PARAM_STR);
 	$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$eliminado[0]->monto, PDO::PARAM_STR);
