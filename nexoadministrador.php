@@ -63,28 +63,34 @@ if (isset($_POST['boton']))
 		persona::Guardar($_POST['numero'],$_POST['empresa'],$_POST['monto'],$_POST['fecha'], $_POST['grupo']);
 	}
 
-	if ($_POST['boton']=="Mostrar") 
+	else if ($_POST['boton']=="Mostrar") 
 	{
 		//echo("muestraaaa");
 		echo(persona::LeerPersonas($_POST['grupo'], $_POST['anio'])) ;
 	}
 
-	if ($_POST['boton']=="MostrarTodos") 
+	else if ($_POST['boton']=="MostrarTodos") 
 	{
 		//echo("muestraaaa");
 		echo(persona::LeerPersonasTodos($_POST['grupo'], $_POST['anio'])) ;
 	}
 
-	if ($_POST['boton']=="archivados") 
+	else if ($_POST['boton']=="archivados") 
 	{
 		//echo("muestraaaa");
 		echo(persona::archivados($_POST['grupo'], $_POST['anio'])) ;
 	}
 
-	if ($_POST['boton']=="Modificar") 
+	else if ($_POST['boton']=="Modificar") 
 	{
 		//echo("muestraaaa");
 		echo(persona::LeerPersonas()) ;
+	}
+	else if ($_POST['boton']=="salir")
+	{
+		session_unset();
+		session_destroy();
+		echo "salir";
 	}
 
 }

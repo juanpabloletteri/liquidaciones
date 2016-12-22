@@ -48,6 +48,7 @@ if (!isset($_SESSION['usuario']))
 
 			<div class="login">
 				<h1>Bienvenido <?php 	echo($_SESSION['usuario']) ?></h1>
+				<button type="button" class="round medium green button" onclick="salir()">Cerrar sesion</button>
 			</div>
 
 

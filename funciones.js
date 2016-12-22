@@ -141,3 +141,27 @@ function Modificar(indice)
 		tabla();
 		$("#tabla").html("");});	
 }
+
+function salir()
+{
+	var f=$.ajax(
+		{
+			url: "nexoadministrador.php",
+			type: "post",
+			data:
+			{
+				boton: "salir"
+			}
+
+		}
+	);
+	f.done (function(salir)
+		{
+			if (salir=="salir")
+			{
+				window.location.href = "index.html";
+			}
+
+			
+		});
+}

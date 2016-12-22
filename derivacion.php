@@ -12,7 +12,13 @@ if (!isset($_SESSION['usuario']))
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>LIQUIDACIONES</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/buttons.css">
 
+  <script src="./dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="./dist/sweetalert.css">
+
+    <script src="./funciones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <style>
   select {
     width: 45%;
@@ -27,6 +33,7 @@ if (!isset($_SESSION['usuario']))
 <body>
       <div class="login">
         <h1>Bienvenido <?php  echo($_SESSION['usuario']) ?></h1>
+        <button type="button" class="round medium green button" onclick="salir()">Cerrar sesion</button>
       </div>
       
   <section class="container">
