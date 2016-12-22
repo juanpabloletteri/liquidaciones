@@ -45,7 +45,9 @@ if (!isset($_SESSION['usuario']))
 
 </head>
 <body>
-
+			<div class="login">
+				<h1>Bienvenido <?php 	echo($_SESSION['usuario']) ?></h1>
+			</div>
 <section class="container">
 
 		<div class="login-help">
@@ -89,6 +91,11 @@ if (!isset($_SESSION['usuario']))
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
 
 				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
+				
+				<select name="anio" id="anio">
+					<option value="2017">2017	</option>
+					<option value="2016">2016	</option>
+				</select>
 
 				<input type="hidden" id="subgrupo" value=0>
 			</div>

@@ -25,6 +25,10 @@ if (!isset($_SESSION['usuario']))
 
 </head>
 <body>
+      <div class="login">
+        <h1>Bienvenido <?php  echo($_SESSION['usuario']) ?></h1>
+      </div>
+      
   <section class="container">
     <div class="login">
       <h1>Derivacion</h1>

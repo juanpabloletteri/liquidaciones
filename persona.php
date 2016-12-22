@@ -52,10 +52,9 @@ public static function Guardar($numero,$empresa, $monto, $fecha, $grupo)
 	$consulta->execute();
 }
 
-public static function LeerPersonas($codigo)
+public static function LeerPersonas($codigo, $anio)
 {
-	$anio=2015;
-
+	
 	if ($codigo!=0)
 	{
 		$total=0;
@@ -68,7 +67,7 @@ public static function LeerPersonas($codigo)
 		$tabla= "<table class='table table-hover table-responsive'>
 				<thead>
 					<tr>
-						<th>  Numero OOO   </th>
+						<th>  Numero   </th>
 						<th>  Empresa   </th>
 						<th>  Fecha Liquidacion   </th>	
 						<th>  Monto Liquidacion  </th>
@@ -104,7 +103,7 @@ public static function LeerPersonas($codigo)
 	{
 		$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas ORDER By empresa");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas WHERE fecha like '%$anio%' ORDER By empresa");
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
@@ -136,13 +135,13 @@ public static function LeerPersonas($codigo)
 	return $tabla;
 }
 
-public static function LeerPersonasTodos($grupo)
+public static function LeerPersonasTodos($grupo, $anio)
 {
 if ($grupo=="todos")
 {
 			$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas ORDER BY empresa");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas WHERE fecha like '%$anio%' ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -184,7 +183,7 @@ else
 {
 			$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where empresa = :grupo ORDER BY empresa");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where empresa = :grupo and fecha like '%$anio%' ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -228,13 +227,13 @@ else
 	return $tabla;
 }
 
-public static function archivados($grupo)
+public static function archivados($grupo, $anio)
 {
 	if ($grupo=="todos")
 	{
 				$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from historial ORDER BY empresa");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from historial WHERE ingreso like '%$anio%' ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
@@ -273,7 +272,7 @@ public static function archivados($grupo)
 	{
 				$total=0;
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from historial where empresa = :grupo ORDER BY empresa");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from historial where empresa = :grupo and ingreso like '%$anio%' ORDER BY empresa");
 		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	

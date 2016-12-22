@@ -8,6 +8,7 @@ function tabla(cod)
 			data:
 			{
 				boton:"Mostrar",
+				anio:$("#anio").val(),
 				grupo: cod,
 			}
 		}
@@ -31,6 +32,7 @@ function tablaTodos(cod)
 			data:
 			{
 				boton:"MostrarTodos",
+				anio:$("#anio").val(),
 				grupo: $("#grupo").val(),
 			}
 		}
@@ -53,6 +55,7 @@ function archivados(cod)
 			data:
 			{
 				boton:"archivados",
+				anio:$("#anio").val(),
 				grupo: $("#grupo").val(),
 			}
 		}

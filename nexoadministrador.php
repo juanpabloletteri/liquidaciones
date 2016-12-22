@@ -66,19 +66,19 @@ if (isset($_POST['boton']))
 	if ($_POST['boton']=="Mostrar") 
 	{
 		//echo("muestraaaa");
-		echo(persona::LeerPersonas($_POST['grupo'])) ;
+		echo(persona::LeerPersonas($_POST['grupo'], $_POST['anio'])) ;
 	}
 
 	if ($_POST['boton']=="MostrarTodos") 
 	{
 		//echo("muestraaaa");
-		echo(persona::LeerPersonasTodos($_POST['grupo'])) ;
+		echo(persona::LeerPersonasTodos($_POST['grupo'], $_POST['anio'])) ;
 	}
 
 	if ($_POST['boton']=="archivados") 
 	{
 		//echo("muestraaaa");
-		echo(persona::archivados($_POST['grupo'])) ;
+		echo(persona::archivados($_POST['grupo'], $_POST['anio'])) ;
 	}
 
 	if ($_POST['boton']=="Modificar") 
