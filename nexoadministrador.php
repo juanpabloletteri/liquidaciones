@@ -81,6 +81,17 @@ if (isset($_POST['boton']))
 		echo(persona::archivados($_POST['grupo'], $_POST['anio'])) ;
 	}
 
+	else if ($_POST['boton']=="archivadosAdmin") 
+	{
+		//echo("muestraaaa");
+		echo(persona::archivadosAdmin($_POST['grupo'], $_POST['anio'])) ;
+	}
+
+	else if ($_POST['boton']=="impagasAdmin") 
+	{
+		//echo("muestraaaa");
+		echo(persona::LeerPersonasTodosAdmin($_POST['grupo'], $_POST['anio'])) ;
+	}
 	else if ($_POST['boton']=="Modificar") 
 	{
 		//echo("muestraaaa");

@@ -90,10 +90,19 @@ if (!isset($_SESSION['usuario']))
 						<option value="OtrosAySA">Otros AySA</option>
 
 			        </select>
+			        <?php 
+					if ($_SESSION['admin']==1)
+					{
+						echo('<button type="button" class="round medium purple button" onclick="impagasAdmin()">Impagas</button>');
+						echo('<button type="button" class="round medium purple button" onclick="archivadosAdmin()">Archiv</button>');
+					}
+				?>
 			        <br><br>
 				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
 
 				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
+
+
 
 				<select name="anio" id="anio">
 					<option value="2017">2017	</option>

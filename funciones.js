@@ -165,3 +165,50 @@ function salir()
 			
 		});
 }
+
+function impagasAdmin()
+{
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"impagasAdmin",
+				anio:$("#anio").val(),
+				grupo: $("#grupo").val(),
+			}
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+}
+function archivadosAdmin()
+{
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"archivadosAdmin",
+				anio:$("#anio").val(),
+				grupo: $("#grupo").val(),
+			}
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+}
