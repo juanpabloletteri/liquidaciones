@@ -46,7 +46,7 @@ if (!isset($_SESSION['usuario']))
 </head>
 <body>
 			<div class="login">
-				<h1>Bienvenido <?php 	echo($_SESSION['usuario']) ?></h1>
+				<h1>Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></h1>
 				<button type="button" class="round medium green button" onclick="salir()">Cerrar sesion</button>
 			</div>
 
