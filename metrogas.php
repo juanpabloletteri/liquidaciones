@@ -54,7 +54,7 @@ if (!isset($_SESSION['usuario']))
 		<h1>Ingreso de datos - METROGAS</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
-			<input type="number" name="numero" id="numero" placeholder="Liquidacion Numero"> (Numero de Liquidacion)
+			<input type="text" name="numero" id="numero" placeholder="Liquidacion Numero"> (Numero de Liquidacion)
 			<br><br>		
 			<input type="number" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
 			<br>
