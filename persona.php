@@ -93,7 +93,7 @@ public static function LeerPersonas($codigo, $anio)
 
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 	}
@@ -127,7 +127,7 @@ public static function LeerPersonas($codigo, $anio)
 							<td>$ ".$personaAux->monto."</td>
 						</tr>";
 			}
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".$total."</td>";	
 		$tabla.= "</table>";
 	}
@@ -175,7 +175,7 @@ if ($grupo=="todos")
 
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 }
@@ -217,7 +217,7 @@ else
 
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 }
@@ -264,7 +264,7 @@ if ($grupo=="todos")
 							<td>".$personaAux->operador."</td>
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 }
@@ -310,7 +310,7 @@ public static function archivados($grupo, $anio)
 
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 	}
@@ -349,7 +349,7 @@ public static function archivados($grupo, $anio)
 
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 	}
@@ -398,7 +398,7 @@ public static function archivadosAdmin($grupo, $anio)
 
 						</tr>";
 			}	
-		$tabla.="<td> Total </td> <td></td>";
+		$tabla.="<td> Total </td> <td></td> <td></td>";
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 	}
