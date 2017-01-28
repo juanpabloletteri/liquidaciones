@@ -268,7 +268,46 @@ if ($grupo=="todos")
 		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
 		$tabla.= "</table>";
 }
+else
+{
+			$total=0;
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from empresas where empresa = :grupo and fecha like '%$anio%' ORDER BY empresa");
+		$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  Numero   </th>
+						<th>  Empresa   </th>
+						<th>  Fecha Liquidacion   </th>	
+						<th>  Monto Liquidacion  </th>
+						<th>  Dias impagos  </th>	
+						<th>  Operador  </th>				
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+				$tiempo=round((strtotime('now') - strtotime($personaAux->fecha))/60/60/24);
+				$total+=$personaAux->monto;
+				$tabla.= " 	<tr>
+							<td>".$personaAux->numero."</td>
+							<td>".$personaAux->empresa."</td>
+							<td>".$personaAux->fecha."</td>
+							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
+							
+							<td>".$tiempo."</td>
+							<td>".$personaAux->operador."</td>
+						</tr>";
+			}	
+		$tabla.="<td> Total </td> <td></td> <td></td>";
+		$tabla.="<td>$ ".number_format($total, 2,',','.')."</td>";
+		$tabla.= "</table>";
+
+}
 
 	return $tabla;
 }
