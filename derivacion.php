@@ -43,7 +43,7 @@ if (!isset($_SESSION['usuario']))
         <label>Empresa: </label>
         <select name="grupo" id="grupo">
           <option value="edesur">Edesur</option>
-          <option value="metrogas">Metrogas</option>
+          <option value="metrogas">Metrogas - YPF</option>
           <option value="telecomunicaciones">Telecomunicaciones</option>
           <option value="aysa">AySA</option>
           <option value="todos">Todas las empresas</option>

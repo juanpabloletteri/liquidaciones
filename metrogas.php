@@ -51,7 +51,7 @@ if (!isset($_SESSION['usuario']))
 			</div>
 <section class="container">
 	<div class="login">
-		<h1>Ingreso de datos - METROGAS</h1>
+		<h1>Ingreso de datos - METROGAS - YPF</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
 			<input type="text" name="numero" id="numero" placeholder="Liquidacion Numero"> (Numero de Liquidacion)
@@ -64,6 +64,7 @@ if (!isset($_SESSION['usuario']))
 				<option value="Cosugas">Cosugas</option>
 				<option value="EmaServicios">Ema Servicios</option>
 				<option value="Inarteco">Inarteco</option>
+				<option value="Inarteco">YPF</option>
 				<option value="OtrosGas">Otros Gas</option>
 			</select>
 			<br>
