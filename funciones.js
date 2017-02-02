@@ -8,7 +8,7 @@ function tabla(cod)
 			data:
 			{
 				boton:"Mostrar",
-				anio:$("#anio").val(),
+				anio:$("#anio").val().concat($("#mes").val()),
 				grupo: cod,
 			}
 		}
@@ -32,7 +32,7 @@ function tablaTodos(cod)
 			data:
 			{
 				boton:"MostrarTodos",
-				anio:$("#anio").val(),
+				anio:$("#anio").val().concat($("#mes").val()),
 				grupo: $("#grupo").val(),
 			}
 		}
@@ -55,7 +55,7 @@ function archivados(cod)
 			data:
 			{
 				boton:"archivados",
-				anio:$("#anio").val(),
+				anio:$("#anio").val().concat($("#mes").val()),
 				grupo: $("#grupo").val(),
 			}
 		}
@@ -176,7 +176,7 @@ function impagasAdmin()
 			data:
 			{
 				boton:"impagasAdmin",
-				anio:$("#anio").val(),
+				anio:$("#anio").val().concat($("#mes").val()),
 				grupo: $("#grupo").val(),
 			}
 		}
@@ -199,7 +199,7 @@ function archivadosAdmin()
 			data:
 			{
 				boton:"archivadosAdmin",
-				anio:$("#anio").val(),
+				anio:$("#anio").val().concat($("#mes").val()),
 				grupo: $("#grupo").val(),
 			}
 		}

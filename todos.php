@@ -35,7 +35,7 @@ if (!isset($_SESSION['usuario']))
   			box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
 	}
 	select {
-    width: 50%;
+    width: 40%;
     padding: 5px 10px;
     border: none;
     border-radius: 8px;
@@ -97,17 +97,38 @@ if (!isset($_SESSION['usuario']))
 						echo('<button type="button" class="round medium purple button" onclick="archivadosAdmin()">Archiv</button>');
 					}
 				?>
-			        <br><br>
-				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
-
-				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
+			       
 
 
-
+				<br><br>
+				<label>Año:</label>
 				<select name="anio" id="anio">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
 				</select>
+
+				<label>Mes:</label>
+				<select name="mes" id="mes">
+					<option value="-">TODOS</option>
+					<option value="-01">Enero</option>
+					<option value="-02">Febrero</option>
+					<option value="-03">Marzo</option>
+					<option value="-04">Abril</option>
+					<option value="-05">Mayo</option>
+					<option value="-06">Junio</option>
+					<option value="-07">Julio</option>
+					<option value="-08">Agosto</option>
+					<option value="-09">Septiembre</option>
+					<option value="-10">Octubre</option>
+					<option value="-11">Noviembre</option>
+					<option value="-12">Diciembre</option>
+				</select>
+
+ 				<br><br>
+ 				
+				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
+
+				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
 
 				<input type="hidden" id="subgrupo" value=0>
 			</div>
