@@ -505,8 +505,8 @@ public static function Eliminar($indice)
 
 	$tiempo=round((strtotime('now') - strtotime($eliminado[0]->fecha))/60/60/24);
 	
-	$fechapago=((date('Y-m-d')));
-	var_dump($fechapago);
+	$fechapago=(date('Y-m-d'));
+	//var_dump($fechapago);
 	
 
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
