@@ -8,7 +8,7 @@ function tabla(cod)
 			data:
 			{
 				boton:"Mostrar",
-				anio:$("#anio").val().concat($("#mes").val()),
+				anio:$("#anio").val(),
 				grupo: cod,
 			}
 		}

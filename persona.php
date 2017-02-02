@@ -328,7 +328,7 @@ public static function archivados($grupo, $anio)
 					<tr>
 						<th>  Numero   </th>
 						<th>  Empresa   </th>
-						<th>  Fecha Liquidacion   </th>	
+						<th>  Fecha de Cobro   </th>	
 						<th>  Monto Liquidacion  </th>
 						<th>  Dias impagos  </th>				
 					</tr> 
@@ -367,7 +367,7 @@ public static function archivados($grupo, $anio)
 					<tr>
 						<th>  Numero   </th>
 						<th>  Empresa   </th>
-						<th>  Fecha Liquidacion   </th>	
+						<th>  Fecha de Cobro   </th>	
 						<th>  Monto Liquidacion  </th>
 						<th>  Dias impagos  </th>				
 					</tr> 
@@ -414,7 +414,7 @@ public static function archivadosAdmin($grupo, $anio)
 					<tr>
 						<th>  Numero   </th>
 						<th>  Empresa   </th>
-						<th>  Fecha Liquidacion   </th>	
+						<th>  Fecha de Cobro   </th>	
 						<th>  Monto Liquidacion  </th>
 						<th>  Dias impagos  </th>
 						<th>  Operador  </th>				
@@ -456,7 +456,7 @@ public static function archivadosAdmin($grupo, $anio)
 					<tr>
 						<th>  Numero   </th>
 						<th>  Empresa   </th>
-						<th>  Fecha Liquidacion   </th>	
+						<th>  Fecha de Cobro   </th>	
 						<th>  Monto Liquidacion  </th>
 						<th>  Dias impagos  </th>
 						<th>  Operador  </th>				
@@ -504,8 +504,10 @@ public static function Eliminar($indice)
 	$eliminado=$consulta->fetchAll(PDO::FETCH_CLASS, "persona");
 
 	$tiempo=round((strtotime('now') - strtotime($eliminado[0]->fecha))/60/60/24);
-	var_dump($eliminado);
-	var_dump($tiempo);
+	
+	$fechapago=((date('Y-m-d')));
+	var_dump($fechapago);
+	
 
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 	$consulta =$objetoAccesoDato->RetornarConsulta("
@@ -514,7 +516,10 @@ public static function Eliminar($indice)
 	values (:numero, :empresa, :ingreso, :monto, :operador, :diasimpagos)");
 	$consulta->bindValue(':numero',$eliminado[0]->numero, PDO::PARAM_STR);
 	$consulta->bindValue(':empresa',$eliminado[0]->empresa, PDO::PARAM_STR);
-	$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
+	//guarda la fecha del ingreso del expediente
+	//$consulta->bindValue(':ingreso',$eliminado[0]->fecha, PDO::PARAM_STR);
+	//ahora guarda la fecha cuando el expediente fue cobrado
+	$consulta->bindValue(':ingreso',$fechapago, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$eliminado[0]->monto, PDO::PARAM_STR);
 	$consulta->bindValue(':operador',$_SESSION['usuario'], PDO::PARAM_STR);
 	$consulta->bindValue(':diasimpagos',$tiempo, PDO::PARAM_STR);	
