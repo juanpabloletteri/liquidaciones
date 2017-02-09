@@ -76,6 +76,7 @@ if (!isset($_SESSION['usuario']))
 						<option value="Cosugas">Cosugas</option>
 						<option value="EmaServicios">Ema Servicios</option>
 						<option value="Inarteco">Inarteco</option>
+						<option value="YPF">YPF</option>
 						<option value="OtrosGas">Otros Gas</option>
 
 						<option value="Cablevision">Cablevision</option>
