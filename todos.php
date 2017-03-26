@@ -67,18 +67,23 @@ if (!isset($_SESSION['usuario']))
 
 						<option value="todos">TODAS LAS EMPRESAS</option>
 
+						<optgroup label="EDESUR">
 						<option value="EdesurAlta">Edesur Alta</option>
 						<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
 						<option value="EdesurMediaBaja">Edesur Media y Baja</option>
 						<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
 						<option value="OtrosEdesur">Otros Edesur</option>
+						</optgroup>
 
+						<optgroup label="METROGAS - YPF">
 						<option value="Cosugas">Cosugas</option>
 						<option value="EmaServicios">Ema Servicios</option>
 						<option value="Inarteco">Inarteco</option>
 						<option value="YPF">YPF</option>
 						<option value="OtrosGas">Otros Gas</option>
+						</optgroup>
 
+						<optgroup label="TELECOMUNICACIONES">
 						<option value="Cablevision">Cablevision</option>
 						<option value="Metrotel">Metrotel</option>				
 						<option value="Telefonica">Telefonica</option>
@@ -86,9 +91,12 @@ if (!isset($_SESSION['usuario']))
 						<option value="Telmex">Telmex</option>
 						<option value="Telecom">Telecom</option>
 						<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
+						</optgroup>
 
+						<optgroup label="AySA">
 						<option value="CosugasAysa">Cosugas Aysa</option>
 						<option value="OtrosAySA">Otros AySA</option>
+						</optgroup>
 
 			        </select>
 			        <?php 
