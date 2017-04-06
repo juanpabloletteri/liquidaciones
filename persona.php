@@ -85,9 +85,9 @@ public static function LeerPersonas($codigo, $anio)
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='round medium green button' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							<td><input type='button' class='btn btn-success' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
-							<input type='button' class='round medium orange button' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
+							<input type='button' class='btn btn-danger' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 
@@ -167,9 +167,9 @@ if ($grupo=="todos")
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='round medium green button' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							<td><input type='button' class='btn btn-success' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
-							<input type='button' class='round medium orange button' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
+							<input type='button' class='btn btn-danger' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 
@@ -209,9 +209,9 @@ else
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='round medium green button' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
+							<td><input type='button' class='btn btn-success' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
 							
-							<input type='button' class='round medium orange button' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
+							<input type='button' class='btn btn-danger' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
 
 							<td>".$tiempo."</td>
 

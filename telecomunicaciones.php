@@ -8,46 +8,23 @@ if (!isset($_SESSION['usuario']))
 <html>
 <head>
 
-	<title>LIQUIDACIONES</title>
-  <link rel="stylesheet" href="css/buttons.css">
+	<title>TELECOMUNICACIONES</title>
+
     <link rel="stylesheet" href="css/style.css">
 
   <script src="./dist/sweetalert-dev.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert.css">
 
 	  <script src="funciones.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-	<style>
-	table, th, td {
-	    border: 1px solid black;
-	    border-collapse: collapse;
-	    padding: 4px;
-	    text-align: center;
-		  background: #eee;
-		  background: rgba(250, 250, 250, 0.8);
-		  border-radius: 4px;
-		  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		   -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
-  			box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
-	}
-	select {
-    width: 50%;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #f1f1f1;
-	}
-	</style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 			<div class="login">
 				<h1>Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></h1>
-				<button type="button" class="round medium green button" onclick="salir()">Cerrar sesion</button>
+				<button type="button" class="btn btn-danger" onclick="salir()">Cerrar sesion</button>
 			</div>
 
 <section class="container">
@@ -55,13 +32,14 @@ if (!isset($_SESSION['usuario']))
 		<h1>Ingreso de datos - TELECOMUNICACIONES</h1>
 
 		<form id="form" action="nexoadministrador.php" method="post" >
-			<input type="text" name="numero" id="numero" placeholder="Liquidacion Numero"> (Numero de Liquidacion)
-			<br><br>
-			<input type="number" name="monto" id="monto" placeholder="Total liquidacion"> (Ingresar sin $)
+			<label>Numero de Liquidacion: </label>
+			<input type="text" name="numero" id="numero" placeholder="Liquidacion Numero" class="form-control">
 			<br>
+			<label>Monto de liquidacion:</label>
+			<input type="number" name="monto" id="monto" placeholder="Total liquidacion (Ingresar sin $)" class="form-control"> 
 			<br>
 			<label>Empresa: </label>
-			<select name="empresa" id="empresa">
+			<select name="empresa" id="empresa" class="form-control">
 				<option value="Cablevision">Cablevision</option>
 				<option value="Metrotel">Metrotel</option>				
 				<option value="Telefonica">Telefonica</option>
@@ -71,13 +49,11 @@ if (!isset($_SESSION['usuario']))
 				<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
 			</select>
 			<br>
-			<br>
 			<label>Fecha de Ingreso: </label>
-			<input type="date" name="fecha" id="fecha">
+			<input type="date" name="fecha" id="fecha" class="form-control">
 
 			<br>
-			<br>
-				<button type="button" class="round medium blue button" onclick="agregar(3)">Agregar</button>
+				<button type="button" class="btn btn-success" onclick="agregar(3)">Agregar</button>
 		</form>
 	</div>
 	<div class="login-help">
@@ -92,14 +68,15 @@ if (!isset($_SESSION['usuario']))
 		<section class="container">
 			<div class="login">
 				<h1>Resumen Liquidaciones - Telecomunicaciones</h1>
-				<button type="button" class="round medium blue button" onclick="tabla(3)">Mostrar</button>
-				<select name="anio" id="anio">
+				<select name="anio" id="anio" class="form-control">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
 				</select>
+				<br>
+				<button type="button" class="btn btn-success" onclick="tabla(3)">Mostrar</button>
 				<input type="hidden" id="subgrupo" value=3>
 			</div>
-				<div class="login" id="tablapersonas">
+				<div class="container" id="tablapersonas">
 			</div>	
 
 

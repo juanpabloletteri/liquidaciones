@@ -2,18 +2,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>LIQUIDACIONES</title>
+  <title>INGRESO</title>
   <link rel="stylesheet" href="css/style.css">
 
-  <style>
-  select {
-    width: 75%;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #f1f1f1;
-  }
-  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -21,13 +15,14 @@
     <div class="login">
       <h1>INGRESO</h1>
       <form method="post" action="nexoadministrador.php">
-        <p><input type="text" name="usuario" placeholder="Usuario"></p>
-        <p><input type="password" name="pass" placeholder="Password"></p>
-        <p><input type="reset" name="Borrar" value="Borrar Datos"></p>
+        <p><input type="text" name="usuario" placeholder="Usuario" class="form-control"></p>
+        <p><input type="password" name="pass" placeholder="Password" class="form-control"></p>
+        <p class="submit"><input type="submit" name="boton" value="Ingresar" class="btn btn-success"></p>
+        <p><input type="reset" name="Borrar" value="Borrar Datos" class="btn btn-danger"></p>
         <p class="remember_me">
 
         </p>
-        <p class="submit"><input type="submit" name="boton" value="Ingresar"></p>
+        
 
       </form>
     </div>

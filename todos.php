@@ -9,45 +9,24 @@ if (!isset($_SESSION['usuario']))
 <head>
 
 	<title>LIQUIDACIONES - TODOS</title>
-  <link rel="stylesheet" href="css/buttons.css">
+
     <link rel="stylesheet" href="css/style.css">
 
   <script src="./dist/sweetalert-dev.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert.css">
 
 	  <script src="./funciones.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<style>
-	table, th, td {
-	    border: 1px solid black;
-	    border-collapse: collapse;
-	    padding: 4px;
-	    text-align: center;
-		  background: #eee;
-		  background: rgba(250, 250, 250, 0.8);
-		  border-radius: 4px;
-		  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-		   -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
-  			box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
-	}
-	select {
-    width: 40%;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #f1f1f1;
-	}
-	</style>
+
 
 </head>
 <body>
 			<div class="login">
 				<h1>Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></h1>
-				<button type="button" class="round medium green button" onclick="salir()">Cerrar sesion</button>
+				<button type="button" class="btn btn-danger" onclick="salir()">Cerrar sesion</button>
 			</div>
 <section class="container">
 
@@ -63,7 +42,7 @@ if (!isset($_SESSION['usuario']))
 			<div class="login">
 				<h1>Resumen Liquidaciones - TODOS</h1>
 					<label>Empresa: </label>
-			        <select name="grupo" id="grupo">
+			        <select name="grupo" id="grupo" class="form-control" >
 
 						<option value="todos">TODAS LAS EMPRESAS</option>
 
@@ -99,25 +78,24 @@ if (!isset($_SESSION['usuario']))
 						</optgroup>
 
 			        </select>
+							
 			        <?php 
 					if ($_SESSION['admin']==1)
 					{
-						echo('<button type="button" class="round medium purple button" onclick="impagasAdmin()">Impagas</button>');
-						echo('<button type="button" class="round medium purple button" onclick="archivadosAdmin()">Archiv</button>');
+						echo('<button type="button" class="btn btn-success" onclick="impagasAdmin()">Impagas</button>');
+						echo('<button type="button" class="btn btn-success" onclick="archivadosAdmin()">Archiv</button><br>');
 					}
 				?>
 			       
-
-
-				<br><br>
+				<br>
 				<label>Año:</label>
-				<select name="anio" id="anio">
+				<select name="anio" id="anio" class="form-control">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
 				</select>
 
 				<label>Mes:</label>
-				<select name="mes" id="mes">
+				<select name="mes" id="mes" class="form-control">
 					<option value="-">TODOS</option>
 					<option value="-01">Enero</option>
 					<option value="-02">Febrero</option>
@@ -133,16 +111,16 @@ if (!isset($_SESSION['usuario']))
 					<option value="-12">Diciembre</option>
 				</select>
 
- 				<br><br>
+ 				<br>
  				
-				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
+				<button type="button" class="btn btn-primary" onclick="tablaTodos(0)">Impagas</button>
 
-				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
+				<button type="button" class="btn btn-primary" onclick="archivados(0)">Archivadas</button>
 
 				<input type="hidden" id="subgrupo" value=0>
 			</div>
 			
-			<div class="login" id="tablapersonas">
+			<div class="container" id="tablapersonas">
 			</div>	
 
 		</section>
