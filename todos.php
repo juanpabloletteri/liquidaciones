@@ -28,14 +28,11 @@ if (!isset($_SESSION['usuario']))
 				<h1>Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></h1>
 				<button type="button" class="btn btn-danger" onclick="salir()">Cerrar sesion</button>
 			</div>
-<section class="container">
 
 		<div class="login-help">
-			<div class="login-help">
 		<p><a href="derivacion.php" style="font-size: 15px">Volver atras</a></p>
-	</div>
-	</div>
-</section>
+		</div>
+
 <div>
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
