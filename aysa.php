@@ -40,7 +40,7 @@ if (!isset($_SESSION['usuario']))
 			<br>
 			<label>Empresa: </label>
 			<select name="empresa" id="empresa" class="form-control">
-				<option value="CosugasAysa">Cosugas Aysa</option>
+				<option value="AySA">AySA</option>
 				<option value="OtrosAySA">Otros AySA</option>
 			</select>
 			<br>

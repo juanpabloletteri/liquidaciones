@@ -70,7 +70,7 @@ if (!isset($_SESSION['usuario']))
 						</optgroup>
 
 						<optgroup label="AySA">
-						<option value="CosugasAysa">Cosugas Aysa</option>
+						<option value="AySA">AySA</option>
 						<option value="OtrosAySA">Otros AySA</option>
 						</optgroup>
 
