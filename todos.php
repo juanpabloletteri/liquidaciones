@@ -80,7 +80,10 @@ if (!isset($_SESSION['usuario']))
 					if ($_SESSION['admin']==1)
 					{
 						echo('<button type="button" class="btn btn-success" onclick="impagasAdmin()">Impagas</button>');
-						echo('<button type="button" class="btn btn-success" onclick="archivadosAdmin()">Archiv</button><br>');
+						echo('<button type="button" class="btn btn-success" onclick="archivadosAdmin()">Archivados</button>');
+						echo('<button type="button" class="btn btn-danger" onclick="historialLoginAdmin()">Login</button>');
+						echo('<button type="button" class="btn btn-danger" onclick="historialLoginFailAdmin()">Login Fail</button>');
+						echo('<button type="button" class="btn btn-danger" onclick="eliminadas()">Eliminadas</button>');
 					}
 				?>
 			       

@@ -103,6 +103,18 @@ if (isset($_POST['boton']))
 		session_destroy();
 		echo "salir";
 	}
+	else if ($_POST['boton']=="historialLoginAdmin")
+	{
+		echo(Persona::historialLoginAdmin());
+	}
+	else if ($_POST['boton']=="historialLoginFailAdmin")
+	{
+		echo(Persona::historialLoginFailAdmin());
+	}
+	else if ($_POST['boton']=="eliminadas")
+	{
+		echo(Persona::eliminadas());
+	}
 
 }
 
@@ -122,4 +134,6 @@ if (isset($_POST['EliminarDefinitivo']))
 	Persona::EliminarDefinitivo($_POST['EliminarDefinitivo']);
 	//header("Location: paginadatos.php");
 }
+
+
 ?>

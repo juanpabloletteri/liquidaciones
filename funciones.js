@@ -212,3 +212,78 @@ function archivadosAdmin()
 		}
 	);	
 }
+
+	function historialLoginAdmin(){
+
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"historialLoginAdmin",
+			}
+			
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+
+ 
+}
+
+function historialLoginFailAdmin(){
+
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"historialLoginFailAdmin",
+			}
+			
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+
+ 
+}
+
+function eliminadas(){
+
+	var f=$.ajax
+	(
+		{
+			url:"nexoadministrador.php",
+			type:"post",
+			data:
+			{
+				boton:"eliminadas",
+			}
+			
+		}
+	);
+	f.done
+	(
+		function(algo) 
+		{
+			$("#tablapersonas").html(algo);
+		}
+	);	
+
+ 
+}

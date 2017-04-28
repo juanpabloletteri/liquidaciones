@@ -580,8 +580,110 @@ public static function EliminarDefinitivo($indice)
 	return $lista;
  }
 
+public static function historialLoginAdmin(){
 
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from histlogin ORDER BY id DESC LIMIT 30");
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_ASSOC);	
 
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  ID   </th>
+						<th>  Usuario   </th>
+						<th>  Ingreso  </th>	
+						<th>  Password usado  </th>
+		
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+
+				$tabla.= " 	<tr>
+							<td>".$personaAux["id"]."</td>
+							<td>".$personaAux["usuario"]."</td>
+							<td>".$personaAux["ingreso"]."</td>
+							<td>".$personaAux["pass"]."</td>
+							</tr>";
+			}	
+		$tabla.= "</table>";	
+	
+		return $tabla;
+
+	}
+
+public static function historialLoginFailAdmin(){
+
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from histloginfail ORDER BY id DESC LIMIT 30");
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_ASSOC);	
+
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  ID   </th>
+						<th>  Usuario   </th>
+						<th>  Ingreso  </th>	
+						<th>  Password usado  </th>
+		
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+
+				$tabla.= " 	<tr>
+							<td>".$personaAux["id"]."</td>
+							<td>".$personaAux["usuario"]."</td>
+							<td>".$personaAux["ingreso"]."</td>
+							<td>".$personaAux["pass"]."</td>
+							</tr>";
+			}	
+		$tabla.= "</table>";	
+	
+		return $tabla;
+
+	}
+public static function eliminadas(){
+
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from eliminadas ORDER BY id DESC LIMIT 50");
+		$consulta->execute();			
+		$array= $consulta->fetchAll(PDO::FETCH_ASSOC);	
+
+		$tabla= "<table class='table table-hover table-responsive'>
+				<thead>
+					<tr>
+						<th>  ID   </th>
+						<th>  Empresa   </th>
+						<th>  Ingreso  </th>	
+						<th>  Monto  </th>
+						<th>  Operador  </th>
+						<th>  Numero  </th>
+		
+					</tr> 
+				</thead>";   	
+
+			foreach ($array as $personaAux)
+			{
+
+				$tabla.= " 	<tr>
+							<td>".$personaAux["id"]."</td>
+							<td>".$personaAux["empresa"]."</td>
+							<td>".$personaAux["ingreso"]."</td>
+							<td>".$personaAux["monto"]."</td>
+							<td>".$personaAux["operador"]."</td>
+							<td>".$personaAux["numero"]."</td>
+							</tr>";
+			}	
+		$tabla.= "</table>";	
+	
+		return $tabla;
+
+	}
 }
 
 
