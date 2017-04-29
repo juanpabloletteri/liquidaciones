@@ -530,7 +530,13 @@ public static function Eliminar($indice)
 	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
 	$consulta->execute();
 }
-
+public static function Eliminarlogin($indice)
+{
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta("DELETE from histlogin where id = :indice");
+	$consulta->bindValue(':indice',$indice, PDO::PARAM_STR);
+	$consulta->execute();
+}
 public static function EliminarDefinitivo($indice)
 {
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
@@ -594,18 +600,19 @@ public static function historialLoginAdmin(){
 						<th>  Usuario   </th>
 						<th>  Ingreso  </th>	
 						<th>  Password usado  </th>
-		
+						<th>  Eliminar  </th>	
 					</tr> 
 				</thead>";   	
 
 			foreach ($array as $personaAux)
 			{
-
+				$id=$personaAux["id"];
 				$tabla.= " 	<tr>
 							<td>".$personaAux["id"]."</td>
 							<td>".$personaAux["usuario"]."</td>
 							<td>".$personaAux["ingreso"]."</td>
 							<td>".$personaAux["pass"]."</td>
+							<td><input type='button' class='btn btn-danger' value='Eliminar' onclick='EliminarLogin($id)'></td>
 							</tr>";
 			}	
 		$tabla.= "</table>";	

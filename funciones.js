@@ -110,6 +110,21 @@ function EliminarDefinitivo(indice)
 		tabla($("#subgrupo").val());
 		$("#tabla").html("");});	
 }
+function EliminarLogin(indice)
+{
+	var f=$.ajax({
+		url:"nexoadministrador.php",
+		type:"post",
+		data:{
+			EliminarLogin: indice
+		}});
+	
+	f.done(function(r) {
+		swal("Ingreso eliminado exitosamente", "", "success");
+		historialLoginAdmin();
+		/*tabla($("#subgrupo").val());
+		$("#tabla").html("");*/});	
+}
 function agregar(grupo)
 {
 	var f=$.ajax({
