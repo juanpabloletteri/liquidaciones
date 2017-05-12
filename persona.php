@@ -692,7 +692,7 @@ public static function eliminadas(){
 			} );
 		</script>
 
-		<table id='example' class='table table-hover table-responsive' cellspacing='0' width='100%'>
+		<table id='example' class='display' cellspacing='0' width='100%'>
 				<thead>
 					<tr>
 						<th>  ID   </th>
