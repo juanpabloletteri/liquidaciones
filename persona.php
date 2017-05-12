@@ -64,7 +64,7 @@ public static function LeerPersonas($codigo, $anio)
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -107,7 +107,7 @@ public static function LeerPersonas($codigo, $anio)
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -146,7 +146,7 @@ if ($grupo=="todos")
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -188,7 +188,7 @@ else
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -238,7 +238,7 @@ if ($grupo=="todos")
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -277,7 +277,7 @@ else
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -323,7 +323,7 @@ public static function archivados($grupo, $anio)
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -362,7 +362,7 @@ public static function archivados($grupo, $anio)
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -409,7 +409,7 @@ public static function archivadosAdmin($grupo, $anio)
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -451,7 +451,7 @@ public static function archivadosAdmin($grupo, $anio)
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_CLASS, "persona");	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  Numero   </th>
@@ -589,21 +589,32 @@ public static function EliminarDefinitivo($indice)
 public static function historialLoginAdmin(){
 
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from histlogin ORDER BY id DESC LIMIT 30");
+		//$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from histlogin ORDER BY id DESC LIMIT 30");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from histlogin");
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_ASSOC);	
 
-		$tabla= "<table class='table table-hover table-responsive'>
-				<thead>
-					<tr>
-						<th>  ID   </th>
-						<th>  Usuario   </th>
-						<th>  Ingreso  </th>	
-						<th>  Password usado  </th>
-						<th>  Eliminar  </th>	
-					</tr> 
-				</thead>";   	
+		$tabla= "
 
+	<script type='text/javascript' class='init'>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+	</script>
+
+	<table id='example' class='table table-hover table-responsive' cellspacing='0' width='100%'>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Fecha</th>
+							<th>Password</th>
+							<th>Eliminar</th>
+							
+						</tr>
+					</thead>
+
+					<tbody>";
 			foreach ($array as $personaAux)
 			{
 				$id=$personaAux["id"];
@@ -614,8 +625,12 @@ public static function historialLoginAdmin(){
 							<td>".$personaAux["pass"]."</td>
 							<td><input type='button' class='btn btn-danger' value='Eliminar' onclick='EliminarLogin($id)'></td>
 							</tr>";
-			}	
-		$tabla.= "</table>";	
+			}
+
+
+					"</tbody>
+				</table>
+";	
 	
 		return $tabla;
 
@@ -628,16 +643,24 @@ public static function historialLoginFailAdmin(){
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_ASSOC);	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "<table id='example' class='table table-hover table-responsive'>
 				<thead>
 					<tr>
 						<th>  ID   </th>
 						<th>  Usuario   </th>
 						<th>  Ingreso  </th>	
 						<th>  Password usado  </th>
-		
 					</tr> 
-				</thead>";   	
+				</thead>
+				<tfoot>
+						<tr>
+						<th>  ID   </th>
+						<th>  Usuario   </th>
+						<th>  Ingreso  </th>	
+						<th>  Password usado  </th>
+					</tr>
+				</tfoot> 
+				";   	
 
 			foreach ($array as $personaAux)
 			{
@@ -657,11 +680,19 @@ public static function historialLoginFailAdmin(){
 public static function eliminadas(){
 
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from eliminadas ORDER BY id DESC LIMIT 50");
+		//$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from eliminadas ORDER BY id DESC LIMIT 50");
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * from eliminadas");
 		$consulta->execute();			
 		$array= $consulta->fetchAll(PDO::FETCH_ASSOC);	
 
-		$tabla= "<table class='table table-hover table-responsive'>
+		$tabla= "	
+		<script type='text/javascript' class='init'>
+			$(document).ready(function() {
+				$('#example').DataTable();
+			} );
+		</script>
+
+		<table id='example' class='table table-hover table-responsive' cellspacing='0' width='100%'>
 				<thead>
 					<tr>
 						<th>  ID   </th>
@@ -691,6 +722,8 @@ public static function eliminadas(){
 		return $tabla;
 
 	}
+
+
 }
 
 
