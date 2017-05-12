@@ -22,10 +22,31 @@ if (!isset($_SESSION['usuario']))
 
 </head>
 <body>
-			<div class="login">
-				<h1>Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></h1>
-				<button type="button" class="btn btn-danger" onclick="salir()">Cerrar sesion</button>
-			</div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" >Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="todos.php">TODOS</a></li>
+		<li><a href="aysa.php">AYSA</a></li>
+        <li><a href="edesur.php">EDESUR</a></li>
+        <li><a href="metrogas.php">METROGAS</a></li>
+		<li><a href="telecomunicaciones.php">TELECOMUNICACIONES</a></li>
+      </ul>
+	  
+      <ul class="nav navbar-nav navbar-right">
+        <li><a onclick="salir()" href="#"><span class="glyphicon glyphicon-log-in"></span>  Cerrar sesion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <section class="container">
 	<div class="login">
@@ -56,9 +77,7 @@ if (!isset($_SESSION['usuario']))
 				<button type="button" class="btn btn-success" onclick="agregar(3)">Agregar</button>
 		</form>
 	</div>
-	<div class="login-help">
-		<p><a href="derivacion.php" style="font-size: 15px">Volver atras</a></p>
-	</div>
+
 
 </section>
 

@@ -15,7 +15,7 @@ if (isset($_POST['boton'], $_POST['usuario'],$_POST['pass']))
 		{
 			$_SESSION['usuario']=$devolucion[0]['usuario'];
 			$_SESSION['admin']=$devolucion[0]['admin'];			
-			header("Location: derivacion.php");
+			header("Location: todos.php");
 		}
 		else
 		{
