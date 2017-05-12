@@ -53,22 +53,33 @@ if (!isset($_SESSION['usuario']))
 
 		<form id="form" action="nexoadministrador.php" method="post" >
 			<label>Numero de Liquidacion: </label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
 			<input type="text" name="numero" id="numero" placeholder="Liquidacion Numero" class="form-control">
+			</div>
 			<br>
 			<label>Monto de liquidacion:</label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
 			<input type="number" name="monto" id="monto" placeholder="Total liquidacion (Ingresar sin $)" class="form-control"> 
+			</div>
 			<br>
 			<label>Empresa: </label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 			<select name="empresa" id="empresa" class="form-control">
 				<option value="AySA">AySA</option>
 				<option value="OtrosAySA">Otros AySA</option>
 			</select>
+			</div>
 			<br>
 			<label>Fecha de Ingreso: </label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			<input type="date" name="fecha" id="fecha"  class="form-control">
-			
+			</div>
 			<br>
-				<button type="button" class="btn btn-success" onclick="agregar(4)">Agregar</button>
+				<button type="button" class="btn btn-success" onclick="agregar(4)"><span class="glyphicon glyphicon-share"></span> Agregar </button>
 		</form>
 	</div>
 
@@ -81,18 +92,19 @@ if (!isset($_SESSION['usuario']))
 		<section class="container">
 			<div class="login">
 				<h1>Resumen Liquidaciones - AySA</h1>
+				<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 				<select name="anio" id="anio" class="form-control">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
 				</select>
+				</div>
 				<br>
-				<button type="button" class="btn btn-success" onclick="tabla(4)">Mostrar</button>
+				<button type="button" class="btn btn-success" onclick="tabla(4)"><span class="glyphicon glyphicon-list"></span> Lista </button>
 				<input type="hidden" id="subgrupo" value=4>
 			</div>
 				<div class="container" id="tablapersonas">
 			</div>	
-
-
 		</section>
 	</form>
 </div>

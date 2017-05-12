@@ -61,7 +61,9 @@ if (!isset($_SESSION['usuario']))
 			<div class="login">
 				<h1>Resumen Liquidaciones - TODOS</h1>
 					<label>Empresa: </label>
-			        <select name="grupo" id="grupo" class="form-control" >
+						<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			  	        <select name="grupo" id="grupo" class="form-control" >
 
 						<option value="todos">TODAS LAS EMPRESAS</option>
 
@@ -97,7 +99,7 @@ if (!isset($_SESSION['usuario']))
 						</optgroup>
 
 			        </select>
-							
+				</div>
 			        <?php 
 					if ($_SESSION['admin']==1)
 					{
@@ -111,12 +113,17 @@ if (!isset($_SESSION['usuario']))
 			       
 				<br>
 				<label>Año:</label>
+				<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 				<select name="anio" id="anio" class="form-control">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
 				</select>
+				</div>
 
 				<label>Mes:</label>
+				<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 				<select name="mes" id="mes" class="form-control">
 					<option value="-">TODOS</option>
 					<option value="-01">Enero</option>
@@ -132,12 +139,12 @@ if (!isset($_SESSION['usuario']))
 					<option value="-11">Noviembre</option>
 					<option value="-12">Diciembre</option>
 				</select>
-
+				</div>
  				<br>
  				
-				<button type="button" class="btn btn-primary" onclick="tablaTodos(0)">Impagas</button>
+				<button type="button" class="btn btn-primary" onclick="tablaTodos(0)"><span class="glyphicon glyphicon-save"></span> Impagas</button>
 
-				<button type="button" class="btn btn-primary" onclick="archivados(0)">Archivadas</button>
+				<button type="button" class="btn btn-primary" onclick="archivados(0)"><span class="glyphicon glyphicon-saved"></span> Archivadas</button>
 
 				<input type="hidden" id="subgrupo" value=0>
 			</div>

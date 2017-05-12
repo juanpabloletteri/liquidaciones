@@ -52,14 +52,22 @@ if (!isset($_SESSION['usuario']))
 	<div class="login">
 		<h1>Ingreso de datos - METROGAS - YPF</h1>
 
-		<form id="form" action="nexoadministrador.php" method="post" >
+	<form id="form" action="nexoadministrador.php" method="post" >
 			<label>Numero de Liquidacion: </label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
 			<input type="text" name="numero" id="numero" placeholder="Liquidacion Numero" class="form-control">
+			</div>
 			<br>
 			<label>Monto de liquidacion:</label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
 			<input type="number" name="monto" id="monto" placeholder="Total liquidacion (Ingresar sin $)" class="form-control"> 
+			</div>
 			<br>
 			<label>Empresa: </label>
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 			<select name="empresa" id="empresa" class="form-control">
 				<option value="Cosugas">Cosugas</option>
 				<option value="EmaServicios">Ema Servicios</option>
@@ -67,12 +75,15 @@ if (!isset($_SESSION['usuario']))
 				<option value="YPF">YPF</option>
 				<option value="OtrosGas">Otros Gas</option>
 			</select>
+			</div>
 			<br>
 			<label>Fecha de Ingreso: </label>
-			<input type="date" name="fecha" id="fecha" class="form-control">
-
+			<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			<input type="date" name="fecha" id="fecha"  class="form-control">
+			</div>
 			<br>
-				<button type="button" class="btn btn-success" onclick="agregar(2)">Agregar</button>
+				<button type="button" class="btn btn-success" onclick="agregar(2)"><span class="glyphicon glyphicon-share"></span> Agregar </button>
 		</form>
 	</div>
 
@@ -85,19 +96,19 @@ if (!isset($_SESSION['usuario']))
 		<section class="container">
 			<div class="login">
 				<h1>Resumen Liquidaciones - METROGAS</h1>
-
+				<div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 				<select name="anio" id="anio" class="form-control">
 					<option value="2017">2017	</option>
 					<option value="2016">2016	</option>
 				</select>
+				</div>
 				<br>
-				<button type="button" class="btn btn-success" onclick="tabla(2)">Mostrar</button>
-				<input type="hidden" id="subgrupo" value=2>
+				<button type="button" class="btn btn-success" onclick="tabla(2)"><span class="glyphicon glyphicon-list"></span> Lista </button>
+				<input type="hidden" id="subgrupo" value=4>
 			</div>
 				<div class="container" id="tablapersonas">
 			</div>	
-
-
 		</section>
 	</form>
 </div>
