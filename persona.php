@@ -85,10 +85,8 @@ public static function LeerPersonas($codigo, $anio)
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='btn btn-success' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
-							
-							<input type='button' class='btn btn-danger' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
-
+							<td><button type='button' class='btn btn-success' id='btnEliminar' onclick='Eliminar($personaAux->id)'><span class='glyphicon glyphicon-ok'></span> Cobrada </button>
+							<button type='button' class='btn btn-danger' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)'><span class='glyphicon glyphicon-remove'></span> Eliminar </button>
 							<td>".$tiempo."</td>
 
 						</tr>";
@@ -167,10 +165,8 @@ if ($grupo=="todos")
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='btn btn-success' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
-							
-							<input type='button' class='btn btn-danger' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
-
+							<td><button type='button' class='btn btn-success' id='btnEliminar' onclick='Eliminar($personaAux->id)'><span class='glyphicon glyphicon-ok'></span> Cobrada </button>
+							<button type='button' class='btn btn-danger' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)'><span class='glyphicon glyphicon-remove'></span> Eliminar </button>
 							<td>".$tiempo."</td>
 
 						</tr>";
@@ -209,10 +205,8 @@ else
 							<td>".$personaAux->empresa."</td>
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
-							<td><input type='button' class='btn btn-success' value='Cobrada' id='btnEliminar' onclick='Eliminar($personaAux->id)'/>
-							
-							<input type='button' class='btn btn-danger' value='Eliminar' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)' /></td>
-
+							<td><button type='button' class='btn btn-success' id='btnEliminar' onclick='Eliminar($personaAux->id)'><span class='glyphicon glyphicon-ok'></span> Cobrada </button>
+							<button type='button' class='btn btn-danger' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)'><span class='glyphicon glyphicon-remove'></span> Eliminar </button>
 							<td>".$tiempo."</td>
 
 						</tr>";

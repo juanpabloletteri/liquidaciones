@@ -107,7 +107,7 @@ if (!isset($_SESSION['usuario']))
 				</div>
 				<br>
 				<button type="button" class="btn btn-success" onclick="tabla(1)"><span class="glyphicon glyphicon-list"></span> Lista </button>
-				<input type="hidden" id="subgrupo" value=4>
+				<input type="hidden" id="subgrupo" value=1>
 			</div>
 				<div class="container" id="tablapersonas">
 			</div>	
