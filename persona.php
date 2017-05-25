@@ -86,6 +86,7 @@ public static function LeerPersonas($codigo, $anio)
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
 							<td><button type='button' class='btn btn-success' id='btnEliminar' onclick='Eliminar($personaAux->id)'><span class='glyphicon glyphicon-ok'></span> Cobrada </button>
+							<button type='button' class='btn btn-warning' id='btnModificar2' onclick='Modificar($personaAux->id)'><span class='glyphicon glyphicon-pencil'></span> Modificar </button>
 							<button type='button' class='btn btn-danger' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)'><span class='glyphicon glyphicon-remove'></span> Eliminar </button>
 							<td>".$tiempo."</td>
 
@@ -166,6 +167,7 @@ if ($grupo=="todos")
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
 							<td><button type='button' class='btn btn-success' id='btnEliminar' onclick='Eliminar($personaAux->id)'><span class='glyphicon glyphicon-ok'></span> Cobrada </button>
+							<button type='button' class='btn btn-warning' id='btnModificar2' onclick='Modificar($personaAux->id)'><span class='glyphicon glyphicon-pencil'></span> Modificar </button>
 							<button type='button' class='btn btn-danger' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)'><span class='glyphicon glyphicon-remove'></span> Eliminar </button>
 							<td>".$tiempo."</td>
 
@@ -206,6 +208,7 @@ else
 							<td>".$personaAux->fecha."</td>
 							<td>$ ".number_format($personaAux->monto, 2,',','.')."</td>
 							<td><button type='button' class='btn btn-success' id='btnEliminar' onclick='Eliminar($personaAux->id)'><span class='glyphicon glyphicon-ok'></span> Cobrada </button>
+							<button type='button' class='btn btn-warning' id='btnModificar2' onclick='Modificar($personaAux->id)'><span class='glyphicon glyphicon-pencil'></span> Modificar </button>
 							<button type='button' class='btn btn-danger' id='btnModificar' onclick='EliminarDefinitivo($personaAux->id)'><span class='glyphicon glyphicon-remove'></span> Eliminar </button>
 							<td>".$tiempo."</td>
 

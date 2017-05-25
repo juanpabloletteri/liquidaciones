@@ -83,32 +83,53 @@ function borrar()
 
 function Eliminar(indice)
 {
-	var f=$.ajax({
-		url:"nexoadministrador.php",
-		type:"post",
-		data:{
-			Eliminar: indice
-		}});
+		swal({
+			title: "Confirmacion",
+			text: "Desea marcar como cobrada esta liquidacion?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Si, cobrar!",
+			closeOnConfirm: false
+			},
+			function(){
+				$.ajax({
+				url:"nexoadministrador.php",
+				type:"post",
+				data:{
+					Eliminar: indice
+				}})
+			swal("Cobrada!", "Se ha cobrado la liquidacion.", "success");
+			tabla($("#subgrupo").val());
+			$("#tabla").html("")
+			});	
 	
-	f.done(function(r) {
-		swal("Liquidacion archivada exitosamente", "", "success");
-		tabla($("#subgrupo").val());
-		$("#tabla").html("");});	
+	
 }
 
 function EliminarDefinitivo(indice)
 {
-	var f=$.ajax({
-		url:"nexoadministrador.php",
-		type:"post",
-		data:{
-			EliminarDefinitivo: indice
-		}});
+		swal({
+			title: "Confirmacion",
+			text: "Desea borrar esta liquidacion?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Si, borrar!",
+			closeOnConfirm: false
+			},
+			function(){
+				$.ajax({
+				url:"nexoadministrador.php",
+				type:"post",
+				data:{
+					EliminarDefinitivo: indice
+				}})
+			swal("Borrada!", "Se ha borrado la liquidacion.", "success");
+			tabla($("#subgrupo").val());
+			$("#tabla").html("")
+			});
 	
-	f.done(function(r) {
-		swal("Liquidacion eliminada exitosamente", "", "success");
-		tabla($("#subgrupo").val());
-		$("#tabla").html("");});	
 }
 function EliminarLogin(indice)
 {
@@ -127,21 +148,36 @@ function EliminarLogin(indice)
 }
 function agregar(grupo)
 {
-	var f=$.ajax({
-		url:"nexoadministrador.php",
-		type:"post",
-		data:{
-			boton: "Agregar",
-			numero: $("#numero").val(),
-			monto: $("#monto").val(),
-			empresa: $("#empresa").val(),
-			fecha: $("#fecha").val(),
-			grupo: grupo,
-		}});
-	f.done(function(r) {
-		tabla(grupo);
-		swal("Liquidacion ingresada exitosamente", "", "success");
-		$("#tabla").html("");});	
+	////////////////////////////////////////////////////////////////////////////////////
+		swal({
+			title: "Confirmacion",
+			text: "Desea agregar esta liquidacion?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Si, agregar!",
+			closeOnConfirm: false
+			},
+			function(){
+				$.ajax({
+				url:"nexoadministrador.php",
+				type:"post",
+				data:{
+					boton: "Agregar",
+					numero: $("#numero").val(),
+					monto: $("#monto").val(),
+					empresa: $("#empresa").val(),
+					fecha: $("#fecha").val(),
+					grupo: grupo,
+				}})
+			tabla(grupo);
+			swal("Agregada!", "Se ha agregado la liquidacion.", "success");
+			$("#tabla").html(""),
+			$("#numero").val(""),
+			$("#monto").val("")
+			});	
+
+
 }
 
 function Modificar(indice)
