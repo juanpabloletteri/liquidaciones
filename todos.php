@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario']))
 	<title>LIQUIDACIONES - TODOS</title>
 
     <link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="./dist/favicon.ico">
+	<link rel="icon" href="./dist/favicon.png">
   <script src="./dist/sweetalert-dev.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert.css">
 
