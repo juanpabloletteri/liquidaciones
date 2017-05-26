@@ -182,15 +182,65 @@ function agregar(grupo)
 
 function Modificar(indice)
 {
-	var f=$.ajax({
+	DibujarModificar()
+	$.ajax({
 		url:"nexoadministrador.php",
 		type:"post",
+		dataType:"JSON",
 		data:{
-			Modificar: indice
-		}});
-	f.done(function(r) {
-		tabla();
-		$("#tabla").html("");});	
+			boton:"Modificar",
+			indice: indice
+			},
+		success:function(data){
+			$("#numero").val(data[0].numero),
+			$("#empresa").val(data[0].empresa),
+			$("#monto").val(data[0].monto),
+			$("#fecha").val(data[0].fecha),
+			$("#id").val(data[0].id)
+		}
+	});
+	
+}
+function DibujarModificar(){
+	$.ajax({
+		url:"nexoadministrador.php",
+		type:"post",
+		data:{boton:"DibujarModificar"},
+		success: function(data){
+			$("#login").html(""),
+			$("#login2").html(""),
+			$("#tablapersonas").html(data)
+		}
+	})
+}
+
+function modificarOK(){
+		swal({
+			title: "Confirmacion",
+			text: "Desea modificar esta liquidacion?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Si, modificar!",
+			closeOnConfirm: false
+			},
+			function(){
+				$.ajax({
+					url:"nexoadministrador.php",
+					type:"post",
+					data:{
+						boton:"modificarOK",
+						numero:$("#numero").val(),
+						empresa:$("#empresa").val(),
+						monto:$("#monto").val(),
+						fecha:$("#fecha").val(),
+						id:$("#id").val()
+					},
+					success: window.location.assign("todos.php")
+				})
+			});	
+	//////////////////
+
 }
 
 function salir()

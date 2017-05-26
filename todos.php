@@ -58,7 +58,7 @@ if (!isset($_SESSION['usuario']))
 <div>
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
-			<div class="login">
+			<div class="login" id="login">
 				<h1>Resumen Liquidaciones - TODOS</h1>
 					<label>Empresa: </label>
 						<div class="input-group">

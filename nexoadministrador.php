@@ -92,11 +92,21 @@ if (isset($_POST['boton']))
 		//echo("muestraaaa");
 		echo(persona::LeerPersonasTodosAdmin($_POST['grupo'], $_POST['anio'])) ;
 	}
+	////////////////////////
 	else if ($_POST['boton']=="Modificar") 
 	{
-		//echo("muestraaaa");
-		echo(persona::LeerPersonas()) ;
+		echo(persona::ObtenerPersona($_POST['indice'])) ;
 	}
+	else if ($_POST['boton']=="DibujarModificar") 
+	{
+		echo(persona::DibujarModificar()) ;
+	}
+	//////////////////
+	else if ($_POST['boton']=="modificarOK") 
+	{
+		echo(persona::modificarOK($_POST['numero'],$_POST['empresa'],$_POST['monto'],$_POST['fecha'], $_POST['id'])) ;
+	}
+	//////////////////
 	else if ($_POST['boton']=="salir")
 	{
 		session_unset();

@@ -1,52 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['usuario']))
-{
-    header('location:index.html');
-}
-?>
-<html>
-<head>
 
-	<title>MODIFICACION</title>
-
-    <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="./dist/favicon.ico">
-  <script src="./dist/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="./dist/sweetalert.css">
-
-	  <script src="funciones.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-</head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" >Bienvenido/a <?php 	echo($_SESSION['usuario']) ?></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="todos.php">TODOS</a></li>
-		<li><a href="aysa.php">AYSA</a></li>
-        <li><a href="edesur.php">EDESUR</a></li>
-        <li><a href="metrogas.php">METROGAS</a></li>
-		<li><a href="telecomunicaciones.php">TELECOMUNICACIONES</a></li>
-      </ul>
-	  
-      <ul class="nav navbar-nav navbar-right">
-        <li><a onclick="salir()" href="#"><span class="glyphicon glyphicon-log-in"></span>  Cerrar sesion</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <section class="container">
 	<div class="login">
 		<h1>Modificacion de datos</h1>
@@ -68,8 +20,36 @@ if (!isset($_SESSION['usuario']))
 			<div class="input-group">
 			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 			<select name="empresa" id="empresa" class="form-control">
-				<option value="AySA">AySA</option>
-				<option value="OtrosAySA">Otros AySA</option>
+						<optgroup label="EDESUR">
+						<option value="EdesurAlta">Edesur Alta</option>
+						<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
+						<option value="EdesurMediaBaja">Edesur Media y Baja</option>
+						<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
+						<option value="OtrosEdesur">Otros Edesur</option>
+						</optgroup>
+
+						<optgroup label="METROGAS - YPF">
+						<option value="Cosugas">Cosugas</option>
+						<option value="EmaServicios">Ema Servicios</option>
+						<option value="Inarteco">Inarteco</option>
+						<option value="YPF">YPF</option>
+						<option value="OtrosGas">Otros Gas</option>
+						</optgroup>
+
+						<optgroup label="TELECOMUNICACIONES">
+						<option value="Cablevision">Cablevision</option>
+						<option value="Metrotel">Metrotel</option>				
+						<option value="Telefonica">Telefonica</option>
+						<option value="Telecentro">Telecentro</option>
+						<option value="Telmex">Telmex</option>
+						<option value="Telecom">Telecom</option>
+						<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
+						</optgroup>
+
+						<optgroup label="AySA">
+						<option value="AySA">AySA</option>
+						<option value="OtrosAySA">Otros AySA</option>
+						</optgroup>
 			</select>
 			</div>
 			<br>
@@ -77,10 +57,12 @@ if (!isset($_SESSION['usuario']))
 			<div class="input-group">
 			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 			<input type="date" name="fecha" id="fecha"  class="form-control">
+			<input type="hidden" name="" id="id" >
 			</div>
 			<br>
-				<button type="button" class="btn btn-success" onclick="modificar()"><span class="glyphicon glyphicon-share"></span> Guardar cambios </button>
+				<button type="button" class="btn btn-success" onclick="modificarOK()"><span class="glyphicon glyphicon-share"></span> Guardar cambios </button>
 				<button type="button" class="btn btn-danger" onclick="volver()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+
 		</form>
 	</div>
 
@@ -91,6 +73,3 @@ if (!isset($_SESSION['usuario']))
 </script>
 
 </section>
-
-</body>
-</html>

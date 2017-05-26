@@ -51,7 +51,7 @@ if (!isset($_SESSION['usuario']))
 
 
 <section class="container">
-	<div class="login">
+	<div class="login" id="login">
 		<h1>Ingreso de datos - EDESUR</h1>
 
 	<form id="form" action="nexoadministrador.php" method="post" >
@@ -96,7 +96,7 @@ if (!isset($_SESSION['usuario']))
 <div>
 	<form action="nexoadministrador.php" method="post">
 		<section class="container">
-			<div class="login">
+			<div class="login" id="login2">
 				<h1>Resumen Liquidaciones - EDESUR</h1>
 				<div class="input-group">
 			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>

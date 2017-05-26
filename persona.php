@@ -1,4 +1,5 @@
 <?php
+
 //session_start();
 class Persona
 {
@@ -38,8 +39,8 @@ public static function Guardar($numero,$empresa, $monto, $fecha, $grupo)
 {
 	//var_dump($_SESSION);
 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-	$consulta =$objetoAccesoDato->RetornarConsulta("
-		INSERT into 
+	$consulta =$objetoAccesoDato->RetornarConsulta(
+		"INSERT into 
 		empresas (numero, empresa, grupo, fecha, monto, operador)
 		values(:numero, :empresa, :grupo, :fecha, :monto, :operador)"
 		);
@@ -48,6 +49,44 @@ public static function Guardar($numero,$empresa, $monto, $fecha, $grupo)
 	$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
 	$consulta->bindValue(':fecha',$fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':monto',$monto, PDO::PARAM_STR);	
+	$consulta->bindValue(':operador',$_SESSION['usuario'], PDO::PARAM_STR);
+	$consulta->execute();
+}
+
+public static function ObtenerPersona($id){////////////////////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta(
+		"SELECT * from 
+		empresas where id = :id");
+	$consulta->bindValue(':id',$id, PDO::PARAM_STR);
+	$consulta->execute();
+	$persona=$consulta->fetchAll(PDO::FETCH_ASSOC);
+	$persona=json_encode($persona);
+	//var_dump($persona);
+
+	return $persona;
+	
+}
+public static function DibujarModificar()
+{
+	include("modificar.php");
+}
+
+public static function modificarOK($numero,$empresa, $monto, $fecha, $id)
+{
+	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+	$consulta =$objetoAccesoDato->RetornarConsulta(
+		"UPDATE empresas
+		SET numero=:numero, empresa=:empresa, monto=:monto, fecha=:fecha, operador=:operador
+		WHERE id=:id"
+		);
+	$consulta->bindValue(':id',$id, PDO::PARAM_INT);
+	$consulta->bindValue(':numero',$numero, PDO::PARAM_INT);
+	$consulta->bindValue(':empresa',$empresa, PDO::PARAM_STR);
+	//$consulta->bindValue(':grupo',$grupo, PDO::PARAM_STR);
+	$consulta->bindValue(':monto',$monto, PDO::PARAM_INT);	
+	$consulta->bindValue(':fecha',$fecha, PDO::PARAM_STR);
 	$consulta->bindValue(':operador',$_SESSION['usuario'], PDO::PARAM_STR);
 	$consulta->execute();
 }
